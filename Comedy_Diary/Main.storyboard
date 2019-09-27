@@ -256,7 +256,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="jokeList" destination="vBM-Wl-fUL" id="oRY-9k-rVr"/>
+                        <outlet property="jokeTable" destination="vBM-Wl-fUL" id="TAi-5a-8HS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8b-Uf-sHi" userLabel="First Responder" sceneMemberID="firstResponder"/>

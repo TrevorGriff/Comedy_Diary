@@ -10,38 +10,15 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class JokeListController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+class JokeListController : UIViewController {
     
-    //tableView.delgate = self
+    @IBOutlet var jokeTable: UITableView!
     
     let realm = try! Realm()
         
-    @IBOutlet var jokeList: UITableView!
-    
     lazy var jokes = realm.objects(Joke.self)
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jokes.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseIdentifier")!
-        
-        let text = jokes[indexPath.row].title
-        
-        cell.textLabel?.text = text
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        print(jokes[indexPath.row])
-        tableView.reloadData()
-        tableView.deselectRow(at: indexPath, animated: true)
-
-    }
+   
 //
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //
@@ -60,14 +37,15 @@ class JokeListController : UIViewController, UITableViewDataSource, UITableViewD
 //        }
     
     override func viewDidLoad(){
+        
         super.viewDidLoad()
         
-        jokeList.dataSource = self
-        jokeList.delegate = self
+        jokeTable.dataSource = self
+        
+        jokeTable.delegate = self
         
         //print(realm.configuration.fileURL)
         
-        loadJokes()
     }
     
     
@@ -77,13 +55,34 @@ class JokeListController : UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
+}
+
+extension JokeListController : UITableViewDataSource, UITableViewDelegate{
     
-    func loadJokes(){
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let results = realm.objects(Joke.self)
+           return jokes.count
+       }
+       
+       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           
+           let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseIdentifier")!
+           
+           let text = jokes[indexPath.row].title
+           
+           cell.textLabel?.text = text
+           
+           return cell
+       }
+       
+       func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+           print(jokes[indexPath.row])
         
-        //reloadJokes()
+           tableView.reloadData()
         
-    }
+           tableView.deselectRow(at: indexPath, animated: true)
+
+       }
     
 }
