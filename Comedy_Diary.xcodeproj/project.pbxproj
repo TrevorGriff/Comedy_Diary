@@ -3,29 +3,51 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15D9B1CDD1B032721F3E08CD /* Pods_Comedy_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481DD2847E7AD43D2572FCE5 /* Pods_Comedy_Diary.framework */; };
 		63FFBD1C233B0C7100E7B615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD1B233B0C7100E7B615 /* AppDelegate.swift */; };
 		63FFBD1E233B0C7100E7B615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD1D233B0C7100E7B615 /* SceneDelegate.swift */; };
-		63FFBD20233B0C7100E7B615 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD1F233B0C7100E7B615 /* ViewController.swift */; };
-		63FFBD23233B0C7100E7B615 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FFBD21233B0C7100E7B615 /* Main.storyboard */; };
 		63FFBD26233B0C7100E7B615 /* Comedy_Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD24233B0C7100E7B615 /* Comedy_Diary.xcdatamodeld */; };
 		63FFBD28233B0C7100E7B615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63FFBD27233B0C7100E7B615 /* Assets.xcassets */; };
-		63FFBD2B233B0C7100E7B615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FFBD29233B0C7100E7B615 /* LaunchScreen.storyboard */; };
+		63FFBD34233B0CB100E7B615 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FFBD32233B0CB100E7B615 /* Main.storyboard */; };
+		63FFBD35233B0CB100E7B615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FFBD33233B0CB100E7B615 /* LaunchScreen.storyboard */; };
+		63FFBD3D233B0CD900E7B615 /* JokeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD36233B0CD900E7B615 /* JokeListController.swift */; };
+		63FFBD3E233B0CD900E7B615 /* SetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD37233B0CD900E7B615 /* SetListController.swift */; };
+		63FFBD3F233B0CD900E7B615 /* JokeContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD38233B0CD900E7B615 /* JokeContoller.swift */; };
+		63FFBD40233B0CD900E7B615 /* SetContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD39233B0CD900E7B615 /* SetContoller.swift */; };
+		63FFBD41233B0CD900E7B615 /* ShowTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD3A233B0CD900E7B615 /* ShowTimeController.swift */; };
+		63FFBD42233B0CD900E7B615 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD3B233B0CD900E7B615 /* MainTabController.swift */; };
+		63FFBD43233B0CD900E7B615 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD3C233B0CD900E7B615 /* HomeViewController.swift */; };
+		63FFBD47233B0D0400E7B615 /* RealmSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD44233B0D0300E7B615 /* RealmSwift.swift */; };
+		63FFBD48233B0D0400E7B615 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD45233B0D0300E7B615 /* Set.swift */; };
+		63FFBD49233B0D0400E7B615 /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD46233B0D0400E7B615 /* Joke.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31B7F0F7B692A09C903C538C /* Pods-Comedy_Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Comedy_Diary.release.xcconfig"; path = "Target Support Files/Pods-Comedy_Diary/Pods-Comedy_Diary.release.xcconfig"; sourceTree = "<group>"; };
+		481DD2847E7AD43D2572FCE5 /* Pods_Comedy_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Comedy_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63FFBD18233B0C7100E7B615 /* Comedy_Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comedy_Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63FFBD1B233B0C7100E7B615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63FFBD1D233B0C7100E7B615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63FFBD1F233B0C7100E7B615 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63FFBD22233B0C7100E7B615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63FFBD25233B0C7100E7B615 /* Comedy_Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Comedy_Diary.xcdatamodel; sourceTree = "<group>"; };
 		63FFBD27233B0C7100E7B615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		63FFBD2A233B0C7100E7B615 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63FFBD2C233B0C7100E7B615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63FFBD32233B0CB100E7B615 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		63FFBD33233B0CB100E7B615 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		63FFBD36233B0CD900E7B615 /* JokeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListController.swift; sourceTree = "<group>"; };
+		63FFBD37233B0CD900E7B615 /* SetListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetListController.swift; sourceTree = "<group>"; };
+		63FFBD38233B0CD900E7B615 /* JokeContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeContoller.swift; sourceTree = "<group>"; };
+		63FFBD39233B0CD900E7B615 /* SetContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetContoller.swift; sourceTree = "<group>"; };
+		63FFBD3A233B0CD900E7B615 /* ShowTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTimeController.swift; sourceTree = "<group>"; };
+		63FFBD3B233B0CD900E7B615 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		63FFBD3C233B0CD900E7B615 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		63FFBD44233B0D0300E7B615 /* RealmSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmSwift.swift; sourceTree = "<group>"; };
+		63FFBD45233B0D0300E7B615 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
+		63FFBD46233B0D0400E7B615 /* Joke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
+		A7E9C3E0B29BE1FAD66C3910 /* Pods-Comedy_Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Comedy_Diary.debug.xcconfig"; path = "Target Support Files/Pods-Comedy_Diary/Pods-Comedy_Diary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15D9B1CDD1B032721F3E08CD /* Pods_Comedy_Diary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +67,8 @@
 			children = (
 				63FFBD1A233B0C7100E7B615 /* Comedy_Diary */,
 				63FFBD19233B0C7100E7B615 /* Products */,
+				899EA1550FBE96049AA2FC00 /* Pods */,
+				F9A5FF28C67E212B0353F9BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +83,58 @@
 		63FFBD1A233B0C7100E7B615 /* Comedy_Diary */ = {
 			isa = PBXGroup;
 			children = (
+				63FFBD4A233BFEBB00E7B615 /* Data Models */,
+				63FFBD4B233BFEF100E7B615 /* Controllers */,
+				63FFBD33233B0CB100E7B615 /* LaunchScreen.storyboard */,
+				63FFBD32233B0CB100E7B615 /* Main.storyboard */,
 				63FFBD1B233B0C7100E7B615 /* AppDelegate.swift */,
 				63FFBD1D233B0C7100E7B615 /* SceneDelegate.swift */,
-				63FFBD1F233B0C7100E7B615 /* ViewController.swift */,
-				63FFBD21233B0C7100E7B615 /* Main.storyboard */,
 				63FFBD27233B0C7100E7B615 /* Assets.xcassets */,
-				63FFBD29233B0C7100E7B615 /* LaunchScreen.storyboard */,
 				63FFBD2C233B0C7100E7B615 /* Info.plist */,
 				63FFBD24233B0C7100E7B615 /* Comedy_Diary.xcdatamodeld */,
 			);
 			path = Comedy_Diary;
+			sourceTree = "<group>";
+		};
+		63FFBD4A233BFEBB00E7B615 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				63FFBD46233B0D0400E7B615 /* Joke.swift */,
+				63FFBD44233B0D0300E7B615 /* RealmSwift.swift */,
+				63FFBD45233B0D0300E7B615 /* Set.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		63FFBD4B233BFEF100E7B615 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63FFBD3C233B0CD900E7B615 /* HomeViewController.swift */,
+				63FFBD38233B0CD900E7B615 /* JokeContoller.swift */,
+				63FFBD36233B0CD900E7B615 /* JokeListController.swift */,
+				63FFBD3B233B0CD900E7B615 /* MainTabController.swift */,
+				63FFBD39233B0CD900E7B615 /* SetContoller.swift */,
+				63FFBD37233B0CD900E7B615 /* SetListController.swift */,
+				63FFBD3A233B0CD900E7B615 /* ShowTimeController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		899EA1550FBE96049AA2FC00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A7E9C3E0B29BE1FAD66C3910 /* Pods-Comedy_Diary.debug.xcconfig */,
+				31B7F0F7B692A09C903C538C /* Pods-Comedy_Diary.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F9A5FF28C67E212B0353F9BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				481DD2847E7AD43D2572FCE5 /* Pods_Comedy_Diary.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63FFBD2F233B0C7100E7B615 /* Build configuration list for PBXNativeTarget "Comedy_Diary" */;
 			buildPhases = (
+				055A2293451022C41F477224 /* [CP] Check Pods Manifest.lock */,
 				63FFBD14233B0C7100E7B615 /* Sources */,
 				63FFBD15233B0C7100E7B615 /* Frameworks */,
 				63FFBD16233B0C7100E7B615 /* Resources */,
+				CA062AA1F3A6DE0975EAA838 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,46 +197,78 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63FFBD2B233B0C7100E7B615 /* LaunchScreen.storyboard in Resources */,
+				63FFBD35233B0CB100E7B615 /* LaunchScreen.storyboard in Resources */,
 				63FFBD28233B0C7100E7B615 /* Assets.xcassets in Resources */,
-				63FFBD23233B0C7100E7B615 /* Main.storyboard in Resources */,
+				63FFBD34233B0CB100E7B615 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		055A2293451022C41F477224 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Comedy_Diary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA062AA1F3A6DE0975EAA838 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Comedy_Diary/Pods-Comedy_Diary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Comedy_Diary/Pods-Comedy_Diary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Comedy_Diary/Pods-Comedy_Diary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63FFBD14233B0C7100E7B615 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63FFBD20233B0C7100E7B615 /* ViewController.swift in Sources */,
+				63FFBD3D233B0CD900E7B615 /* JokeListController.swift in Sources */,
 				63FFBD1C233B0C7100E7B615 /* AppDelegate.swift in Sources */,
+				63FFBD3E233B0CD900E7B615 /* SetListController.swift in Sources */,
+				63FFBD3F233B0CD900E7B615 /* JokeContoller.swift in Sources */,
+				63FFBD40233B0CD900E7B615 /* SetContoller.swift in Sources */,
+				63FFBD47233B0D0400E7B615 /* RealmSwift.swift in Sources */,
+				63FFBD43233B0CD900E7B615 /* HomeViewController.swift in Sources */,
+				63FFBD42233B0CD900E7B615 /* MainTabController.swift in Sources */,
+				63FFBD48233B0D0400E7B615 /* Set.swift in Sources */,
+				63FFBD49233B0D0400E7B615 /* Joke.swift in Sources */,
 				63FFBD26233B0C7100E7B615 /* Comedy_Diary.xcdatamodeld in Sources */,
 				63FFBD1E233B0C7100E7B615 /* SceneDelegate.swift in Sources */,
+				63FFBD41233B0CD900E7B615 /* ShowTimeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		63FFBD21233B0C7100E7B615 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63FFBD22233B0C7100E7B615 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		63FFBD29233B0C7100E7B615 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63FFBD2A233B0C7100E7B615 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		63FFBD2D233B0C7100E7B615 /* Debug */ = {
@@ -286,6 +387,7 @@
 		};
 		63FFBD30233B0C7100E7B615 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7E9C3E0B29BE1FAD66C3910 /* Pods-Comedy_Diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +406,7 @@
 		};
 		63FFBD31233B0C7100E7B615 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31B7F0F7B692A09C903C538C /* Pods-Comedy_Diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
