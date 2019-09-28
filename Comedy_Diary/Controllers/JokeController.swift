@@ -1,5 +1,5 @@
 //
-//  JokeContoller.swift
+//  JokeController.swift
 //  ComedyOrganizer
 //
 //  Created by Trevor Griffiths on 9/6/19.
@@ -10,9 +10,12 @@ import Foundation
 import UIKit
 
 class JokeController : UIViewController {
+   
+    var jokeIndex = 0
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        
     }
     
     

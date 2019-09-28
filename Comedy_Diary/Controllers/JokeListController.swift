@@ -12,39 +12,24 @@ import RealmSwift
 
 class JokeListController : UIViewController {
     
-    @IBOutlet var jokeTable: UITableView!
+   
+    @IBOutlet weak var jokeTable: UITableView?
     
     let realm = try! Realm()
         
     lazy var jokes = realm.objects(Joke.self)
     
-   
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        performSegue(withIdentifier: "goToItems", sender: self)
-//
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-//
-//        let destinationVC = segue.destination as! JokeController
-//
-//        if let indexPath = tableView.indexPathForSelectedRow{
-//
-//            destinationVC.selectedCategory = jokes?[indexPath.row]
-//
-//        }
+
     
     override func viewDidLoad(){
         
         super.viewDidLoad()
         
-        jokeTable.dataSource = self
+        jokeTable?.dataSource = self
         
-        jokeTable.delegate = self
+        //jokeTable.delegate = self
         
-        //print(realm.configuration.fileURL)
+        print(realm.configuration.fileURL)
         
     }
     
@@ -59,30 +44,48 @@ class JokeListController : UIViewController {
 
 extension JokeListController : UITableViewDataSource, UITableViewDelegate{
     
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        print("1")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseIdentifier", for: indexPath)
+       //let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseIdentifier")
+        print("2")
+        let text = jokes[indexPath.row].title
+        print("3")
+        cell.textLabel!.text = text
+            
+        return cell
+        
+        
+    }
+    
+    
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
            return jokes.count
        }
-       
-       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           
-           let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseIdentifier")!
-           
-           let text = jokes[indexPath.row].title
-           
-           cell.textLabel?.text = text
-           
-           return cell
-       }
-       
+
        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
            print(jokes[indexPath.row])
-        
+
            tableView.reloadData()
-        
+
            tableView.deselectRow(at: indexPath, animated: true)
 
+           // performSegue(withIdentifier: "jokeListToJoke", sender: self)
+
        }
+    
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+
+            let destinationVC = segue.destination as! JokeController
+
+//            if let indexPath = jokeTable.indexPathForSelectedRow{
+//
+//                destinationVC.jokeIndex = indexPath.row
+//
+//            }
+      }
     
 }

@@ -176,6 +176,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zUn-Xk-rF0"/>
                     </view>
+                    <navigationItem key="navigationItem" id="odU-xq-e7H"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7o0-wW-Xlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -213,7 +214,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hXD-XY-Nyw" kind="relationship" relationship="rootViewController" id="gQr-pI-fkZ"/>
+                        <segue destination="SrR-h5-sbA" kind="relationship" relationship="rootViewController" id="5zp-nk-7VO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wXh-QW-dKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -221,47 +222,41 @@
             <point key="canvasLocation" x="928.98550724637687" y="-421.20535714285711"/>
         </scene>
         <!--Joke List-->
-        <scene sceneID="fX2-Rv-SZ9">
+        <scene sceneID="fOi-9q-k1A">
             <objects>
-                <viewController storyboardIdentifier="JokeListController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hXD-XY-Nyw" customClass="JokeListController" customModule="Comedy_Diary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="jokeListTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vBM-Wl-fUL" customClass="jokeListTableView" customModule="Comedy_Diary" customModuleProvider="target">
+                <viewController restorationIdentifier="JokeListController" storyboardIdentifier="JokeListController" id="SrR-h5-sbA" customClass="JokeListController" customModule="Comedy_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dca-oG-d3G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellReuseIdentifier" textLabel="9H5-PL-ivr" style="IBUITableViewCellStyleDefault" id="RIH-Wr-GOT">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RIH-Wr-GOT" id="i9h-Ec-5Xz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9H5-PL-ivr">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gS8-Nu-1RA" customClass="JokeTable">
+                                <rect key="frame" x="5" y="88" width="414" height="730"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CellReuseIdentifier" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellReuseIdentifier" id="E71-0n-Azp">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E71-0n-Azp" id="f4T-MH-u4U">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Joke List" id="aAY-5t-mvo">
-                        <barButtonItem key="rightBarButtonItem" title="Home" id="qBB-34-cl7">
-                            <connections>
-                                <action selector="homeButton:" destination="hXD-XY-Nyw" id="jgN-sY-wCd"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="N16-7h-G7H"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Joke List" id="YX8-I7-oiI"/>
                     <connections>
-                        <outlet property="jokeTable" destination="vBM-Wl-fUL" id="TAi-5a-8HS"/>
+                        <outlet property="jokeTable" destination="gS8-Nu-1RA" id="AZJ-g7-hbe"/>
+                        <segue destination="HdH-cT-SBJ" kind="show" identifier="jokeListToJoke" id="rhN-tc-4FW"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f8b-Uf-sHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yXI-uT-lZO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="-380"/>
+            <point key="canvasLocation" x="1766.6666666666667" y="-422.54464285714283"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="Z9a-HW-qeb">

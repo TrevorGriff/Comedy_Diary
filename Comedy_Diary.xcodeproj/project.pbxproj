@@ -16,7 +16,7 @@
 		63FFBD35233B0CB100E7B615 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FFBD33233B0CB100E7B615 /* LaunchScreen.storyboard */; };
 		63FFBD3D233B0CD900E7B615 /* JokeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD36233B0CD900E7B615 /* JokeListController.swift */; };
 		63FFBD3E233B0CD900E7B615 /* SetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD37233B0CD900E7B615 /* SetListController.swift */; };
-		63FFBD3F233B0CD900E7B615 /* JokeContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD38233B0CD900E7B615 /* JokeContoller.swift */; };
+		63FFBD3F233B0CD900E7B615 /* JokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD38233B0CD900E7B615 /* JokeController.swift */; };
 		63FFBD40233B0CD900E7B615 /* SetContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD39233B0CD900E7B615 /* SetContoller.swift */; };
 		63FFBD41233B0CD900E7B615 /* ShowTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD3A233B0CD900E7B615 /* ShowTimeController.swift */; };
 		63FFBD42233B0CD900E7B615 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD3B233B0CD900E7B615 /* MainTabController.swift */; };
@@ -39,7 +39,7 @@
 		63FFBD33233B0CB100E7B615 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63FFBD36233B0CD900E7B615 /* JokeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeListController.swift; sourceTree = "<group>"; };
 		63FFBD37233B0CD900E7B615 /* SetListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetListController.swift; sourceTree = "<group>"; };
-		63FFBD38233B0CD900E7B615 /* JokeContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeContoller.swift; sourceTree = "<group>"; };
+		63FFBD38233B0CD900E7B615 /* JokeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeController.swift; sourceTree = "<group>"; };
 		63FFBD39233B0CD900E7B615 /* SetContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetContoller.swift; sourceTree = "<group>"; };
 		63FFBD3A233B0CD900E7B615 /* ShowTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTimeController.swift; sourceTree = "<group>"; };
 		63FFBD3B233B0CD900E7B615 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				63FFBD3C233B0CD900E7B615 /* HomeViewController.swift */,
-				63FFBD38233B0CD900E7B615 /* JokeContoller.swift */,
+				63FFBD38233B0CD900E7B615 /* JokeController.swift */,
 				63FFBD36233B0CD900E7B615 /* JokeListController.swift */,
 				63FFBD3B233B0CD900E7B615 /* MainTabController.swift */,
 				63FFBD39233B0CD900E7B615 /* SetContoller.swift */,
@@ -255,7 +255,7 @@
 				63FFBD3D233B0CD900E7B615 /* JokeListController.swift in Sources */,
 				63FFBD1C233B0C7100E7B615 /* AppDelegate.swift in Sources */,
 				63FFBD3E233B0CD900E7B615 /* SetListController.swift in Sources */,
-				63FFBD3F233B0CD900E7B615 /* JokeContoller.swift in Sources */,
+				63FFBD3F233B0CD900E7B615 /* JokeController.swift in Sources */,
 				63FFBD40233B0CD900E7B615 /* SetContoller.swift in Sources */,
 				63FFBD47233B0D0400E7B615 /* RealmSwift.swift in Sources */,
 				63FFBD43233B0CD900E7B615 /* HomeViewController.swift in Sources */,
