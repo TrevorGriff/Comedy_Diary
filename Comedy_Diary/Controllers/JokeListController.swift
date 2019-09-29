@@ -27,7 +27,7 @@ class JokeListController : UIViewController {
         
         jokeTable?.dataSource = self
         
-        //jokeTable.delegate = self
+        jokeTable?.delegate = self
         
         print(realm.configuration.fileURL)
         
@@ -46,19 +46,16 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print("1")
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseIdentifier", for: indexPath)
-       //let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseIdentifier")
-        print("2")
+
         let text = jokes[indexPath.row].title
-        print("3")
+
         cell.textLabel!.text = text
             
         return cell
         
         
     }
-    
     
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
@@ -67,25 +64,29 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
 
        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-           print(jokes[indexPath.row])
+           //print(jokes[indexPath.row])
 
-           tableView.reloadData()
+          // tableView.reloadData()
 
-           tableView.deselectRow(at: indexPath, animated: true)
+           //tableView.deselectRow(at: indexPath, animated: true)
 
-           // performSegue(withIdentifier: "jokeListToJoke", sender: self)
+            performSegue(withIdentifier: "jokeListToJoke", sender: self)
 
        }
     
         override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-
+            
             let destinationVC = segue.destination as! JokeController
 
-//            if let indexPath = jokeTable.indexPathForSelectedRow{
-//
-//                destinationVC.jokeIndex = indexPath.row
-//
-//            }
+            if let indexPath = jokeTable!.indexPathForSelectedRow{
+                
+               // print(destinationVC.selectedJoke as Any)
+                
+                let selectedJoke = jokes[indexPath.row]
+                
+                destinationVC.displayJoke = selectedJoke
+
+            }
       }
     
 }

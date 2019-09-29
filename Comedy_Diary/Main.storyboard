@@ -157,30 +157,47 @@
             </objects>
             <point key="canvasLocation" x="2688" y="271"/>
         </scene>
-        <!--Joke Controller-->
+        <!--Joke-->
         <scene sceneID="Liq-4D-6RG">
             <objects>
-                <viewController storyboardIdentifier="jokeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HdH-cT-SBJ" customClass="jokeController" customModule="Comedy_Diary" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gq3-6s-dJq">
+                <viewController id="HdH-cT-SBJ" customClass="JokeController" customModule="Comedy_Diary" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="bodyJokeText" id="gq3-6s-dJq" customClass="bodyJokeText" customModule="Comedy_Diary">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joke" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q24-by-KQN">
-                                <rect key="frame" x="170" y="368" width="37" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="titleViewText" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Joke Title" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZPr-Re-5YU">
+                                <rect key="frame" x="20" y="88" width="384" height="34"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="bodyTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="The Joke" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fr4-oh-WYT">
+                                <rect key="frame" x="20" y="130" width="374" height="34"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZPr-Re-5YU" firstAttribute="leading" secondItem="gq3-6s-dJq" secondAttribute="leadingMargin" id="E0Z-k7-I6r"/>
+                            <constraint firstItem="ZPr-Re-5YU" firstAttribute="top" secondItem="zUn-Xk-rF0" secondAttribute="top" id="Wqs-dS-aUb"/>
+                            <constraint firstItem="zUn-Xk-rF0" firstAttribute="trailing" secondItem="ZPr-Re-5YU" secondAttribute="trailing" constant="10" id="bbr-of-Mci"/>
+                            <constraint firstItem="ZPr-Re-5YU" firstAttribute="leading" secondItem="fr4-oh-WYT" secondAttribute="leading" id="lH9-OY-3ff"/>
+                            <constraint firstItem="zUn-Xk-rF0" firstAttribute="bottom" secondItem="fr4-oh-WYT" secondAttribute="bottom" constant="649" id="pXD-E8-f92"/>
+                            <constraint firstItem="fr4-oh-WYT" firstAttribute="trailing" secondItem="gq3-6s-dJq" secondAttribute="trailingMargin" id="x6E-Z9-gCp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zUn-Xk-rF0"/>
                     </view>
-                    <navigationItem key="navigationItem" id="odU-xq-e7H"/>
+                    <navigationItem key="navigationItem" title="Joke" id="odU-xq-e7H"/>
+                    <connections>
+                        <outlet property="bodyField" destination="fr4-oh-WYT" id="L28-Cn-Ypz"/>
+                        <outlet property="titleField" destination="ZPr-Re-5YU" id="Un0-UY-aHD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7o0-wW-Xlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2723" y="-421"/>
+            <point key="canvasLocation" x="2721.739130434783" y="-421.20535714285711"/>
         </scene>
         <!--Main Tab Controller-->
         <scene sceneID="Iua-as-I21">
@@ -234,11 +251,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CellReuseIdentifier" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellReuseIdentifier" id="E71-0n-Azp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CellReuseIdentifier" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CellReuseIdentifier" id="E71-0n-Azp">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E71-0n-Azp" id="f4T-MH-u4U">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382.5" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

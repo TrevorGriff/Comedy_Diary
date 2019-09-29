@@ -8,14 +8,27 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-class JokeController : UIViewController {
+class JokeController: UIViewController {
    
-    var jokeIndex = 0
+    @IBOutlet weak var titleField: UITextField!
     
+    @IBOutlet weak var bodyField: UITextField!
+    
+    var displayJoke: Joke?
+   
     override func viewDidLoad(){
         super.viewDidLoad()
         
+        //print("Passed: \(selectedJoke)")
+
+        titleField.text = displayJoke?.title
+        
+        
+        bodyField.text = displayJoke?.body
+        
+        reloadInputViews()
     }
     
     
