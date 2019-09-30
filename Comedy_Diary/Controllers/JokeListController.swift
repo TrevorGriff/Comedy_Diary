@@ -49,7 +49,8 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseIdentifier", for: indexPath)
 
         let text = jokes[indexPath.row].title
-
+        
+        //cell.t = text
         cell.textLabel!.text = text
             
         return cell

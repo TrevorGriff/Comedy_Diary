@@ -18,7 +18,7 @@ class Joke: Object {
     @objc dynamic var jokeID = UUID().uuidString
     @objc dynamic var title = ""
     @objc dynamic var body = ""
-    dynamic var duration = RealmOptional<Int>()
+    var duration = RealmOptional<Int>()
     @objc dynamic var dateCreated: Date?
     @objc dynamic var dateEdited: Date?
     
@@ -40,16 +40,10 @@ class Joke: Object {
             
     }
     
-//    func dateCreatedString() -> String{
-//        let myDF = DateFormatter()
-//        myDF.dateStyle = .medium
-//        let theDate: NSDate = dateCreated!
-//        return myDF.string(from: theDate as Date)
-//    }
-
     func dateEditedAsString() -> String{
         let myDF = DateFormatter()
         myDF.dateStyle = .medium
+        myDF.dateFormat = "MM/dd/yyyy"
         let theDate: NSDate = dateEdited! as NSDate
         return myDF.string(from: theDate as Date)
     }
@@ -57,9 +51,14 @@ class Joke: Object {
     func dateCreatedAsString() -> String{
         let myDF = DateFormatter()
         myDF.dateStyle = .medium
+        myDF.dateFormat = "MM/dd/yy"
         return myDF.string(from: dateEdited! as Date)
     }
     
-    
+    func CountOflinksToSetsAsString() -> String{
+        
+        let count: Int = sets.count
+        return String(count)
+    }
 }
 
