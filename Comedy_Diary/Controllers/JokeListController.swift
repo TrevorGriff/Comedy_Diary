@@ -29,13 +29,12 @@ class JokeListController : UIViewController {
         
         jokeTable?.delegate = self
         
-        print(realm.configuration.fileURL)
+       // print(realm.configuration.fileURL)
         
     }
     
+    @IBAction func homeButton(_ sender: Any){
     
-    @IBAction func homeButton(_ sender: Any) {
-        
        dismiss(animated: true, completion: nil)
         
     }
@@ -46,13 +45,12 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseRow", for: indexPath) as! JokeListRow
 
-        let text = jokes[indexPath.row].title
+        cell.titleFieldView.text = jokes[indexPath.row].title
         
-        //cell.t = text
-        cell.textLabel!.text = text
-            
+        cell.durationFieldView.text = jokes[indexPath.row].durationString()
+        
         return cell
         
         
@@ -64,12 +62,6 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
        }
 
        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-           //print(jokes[indexPath.row])
-
-          // tableView.reloadData()
-
-           //tableView.deselectRow(at: indexPath, animated: true)
 
             performSegue(withIdentifier: "jokeListToJoke", sender: self)
 
@@ -90,4 +82,10 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
             }
       }
     
+}
+
+class JokeListRow: UITableViewCell{
+
+    @IBOutlet weak var titleFieldView: UILabel!
+    @IBOutlet weak var durationFieldView: UILabel!
 }
