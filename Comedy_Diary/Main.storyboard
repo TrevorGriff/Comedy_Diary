@@ -231,7 +231,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zUn-Xk-rF0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Joke" id="odU-xq-e7H"/>
+                    <toolbarItems>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="dQV-uz-Bit"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Joke" id="odU-xq-e7H">
+                        <rightBarButtonItems>
+                            <barButtonItem title="+" id="JP3-IZ-umQ" customClass="addBarButton">
+                                <connections>
+                                    <action selector="addButton:" destination="HdH-cT-SBJ" id="5lZ-iN-C2H"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="-" id="OoU-NE-dq2">
+                                <connections>
+                                    <action selector="deleteButton:" destination="HdH-cT-SBJ" id="srp-2Z-lsb"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bodyField" destination="fr4-oh-WYT" id="L28-Cn-Ypz"/>
                         <outlet property="countOfSetsField" destination="UNJ-6R-UaF" id="NI4-wp-BEt"/>
@@ -347,14 +364,14 @@
                         <viewLayoutGuide key="safeArea" id="N16-7h-G7H"/>
                     </view>
                     <navigationItem key="navigationItem" title="Joke List" id="YX8-I7-oiI">
-                        <barButtonItem key="rightBarButtonItem" title="Home" style="plain" id="OhL-SM-w79">
+                        <barButtonItem key="rightBarButtonItem" title="Home" style="plain" id="OhL-SM-w79" customClass="homeButton">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HcN-7u-h4y">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Home"/>
                             </button>
                             <connections>
-                                <action selector="homeButton:" destination="SrR-h5-sbA" id="9qm-c4-PDi"/>
+                                <action selector="homeButton:" destination="SrR-h5-sbA" id="1Pg-bl-vby"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

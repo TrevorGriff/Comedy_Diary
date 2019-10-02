@@ -23,8 +23,8 @@ class JokeController: UIViewController {
    
     override func viewDidLoad(){
         super.viewDidLoad()
-        
-        //print("Passed: \(selectedJoke)")0
+            
+        //navigationItem.rightBarButtonItem?.setTitleTextAttributes( 
 
         titleField.text = displayJoke?.title
         
@@ -39,6 +39,14 @@ class JokeController: UIViewController {
         countOfSetsField.text = displayJoke?.CountOflinksToSetsAsString()
         
         reloadInputViews()
+    }
+    
+    @IBAction func deleteButton(_ sender: UIBarButtonItem) {
+        print("Delete")
+    }
+    
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        print("Add")
     }
     
     

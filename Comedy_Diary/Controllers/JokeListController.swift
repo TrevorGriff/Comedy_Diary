@@ -33,11 +33,13 @@ class JokeListController : UIViewController {
         
     }
     
-    @IBAction func homeButton(_ sender: Any){
     
-       dismiss(animated: true, completion: nil)
+    @IBAction func homeButton(_ sender: UIBarButtonItem) {
         
+        dismiss(animated: true, completion: nil)
+
     }
+    
     
 }
 
