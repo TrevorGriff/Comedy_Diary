@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class JokeController: UIViewController {
+class JokeController: UIViewController, UITextFieldDelegate{
    
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var bodyField: UITextField!
@@ -20,12 +20,14 @@ class JokeController: UIViewController {
     @IBOutlet weak var durationField: UITextField!
     
     var displayJoke: Joke?
+    
    
     override func viewDidLoad(){
         super.viewDidLoad()
             
-        //navigationItem.rightBarButtonItem?.setTitleTextAttributes( 
-
+        
+        bodyField.delegate = self as! UITextFieldDelegate
+        
         titleField.text = displayJoke?.title
         
         bodyField.text = displayJoke?.body
@@ -47,6 +49,18 @@ class JokeController: UIViewController {
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         print("Add")
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        bodyField.text = displayJoke?.body
+//        let realm = RealmDB.shared.realm
+//        realm.up
+        
+        
+        bodyField.resignFirstResponder()
+        
+        return true
     }
     
     

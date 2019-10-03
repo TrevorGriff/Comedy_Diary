@@ -19,8 +19,6 @@ class JokeListController : UIViewController {
         
     lazy var jokes = realm.objects(Joke.self)
     
-
-    
     override func viewDidLoad(){
         
         super.viewDidLoad()
