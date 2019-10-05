@@ -53,10 +53,9 @@ class JokeController: UIViewController, UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        bodyField.text = displayJoke?.body
-//        let realm = RealmDB.shared.realm
-//        realm.up
+        let dict: [String: Any?] = ["body": bodyField.text ]
         
+        RealmDB.shared.update(displayJoke!, with: dict)
         
         bodyField.resignFirstResponder()
         
