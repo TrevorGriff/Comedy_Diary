@@ -31,6 +31,13 @@ class JokeListController : UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool){
+
+        self.jokeTable?.reloadData()
+        
+    }
+    
+    
     @IBAction func homeButton(_ sender: Any) {
         print ("home")
         dismiss(animated: true, completion: nil)
@@ -54,6 +61,7 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
         
         
     }
+    
     
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 

@@ -65,7 +65,6 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate{
         
         updateJokeDisplay()
         
-        print("Add")
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
