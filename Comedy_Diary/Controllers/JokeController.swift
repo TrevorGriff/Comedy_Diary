@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class JokeController: UIViewController, UITextFieldDelegate{
+class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate{
    
     @IBOutlet weak var titleField: UITextField!
-    @IBOutlet weak var bodyField: UITextField!
+    @IBOutlet weak var bodyView: UITextView!
     @IBOutlet weak var creatdField: UITextField!
     @IBOutlet weak var lastEditedField: UITextField!
     @IBOutlet weak var countOfSetsField: UITextField!
@@ -22,15 +22,19 @@ class JokeController: UIViewController, UITextFieldDelegate{
     var displayJoke: Joke?
     
    
-    override func viewDidLoad(){
+    override func viewDidLoad() {
         super.viewDidLoad()
             
+        self.titleField.delegate = self
         
-        bodyField.delegate = self as! UITextFieldDelegate
+        self.durationField.delegate = self
+        
+        
+        bodyView.delegate = self as? UITextViewDelegate
         
         titleField.text = displayJoke?.title
         
-        bodyField.text = displayJoke?.body
+        bodyView.text = displayJoke?.body
 
         durationField.text = displayJoke?.durationString()
         
@@ -51,16 +55,42 @@ class JokeController: UIViewController, UITextFieldDelegate{
         print("Add")
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
+       
+        if (text == "\n"){
+            
+            textView.resignFirstResponder()
+            
+            return updateDBValues()
+            
+        }
+        return true
+    }
+    
+   func  textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        let dict: [String: Any?] = ["body": bodyField.text ]
+        textField.resignFirstResponder()
+      
+        return updateDBValues()
+    
+      }
+    
+    func updateDBValues() -> Bool{
+        
+        let durationInteger = Int(durationField.text ?? "0")
+        
+        let edited = Date()
+            
+        let dict: [String: Any?] = ["title": titleField.text, "body": bodyView.text, "duration": durationInteger, "dateEdited": edited]
+        
+        lastEditedField.text = "Edited " + (displayJoke?.dateEditedAsString() ?? "")
         
         RealmDB.shared.update(displayJoke!, with: dict)
         
-        bodyField.resignFirstResponder()
+        return false
         
-        return true
     }
     
     
 }
+
