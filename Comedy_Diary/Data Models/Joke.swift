@@ -19,8 +19,8 @@ class Joke: Object {
     @objc dynamic var title = ""
     @objc dynamic var body = ""
     var duration = RealmOptional<Int>()
-    @objc dynamic var dateCreated: Date?
-    @objc dynamic var dateEdited: Date?
+    @objc dynamic var dateCreated: NSDate? = NSDate()
+    @objc dynamic var dateEdited: NSDate? = Date() as NSDate
     
     let sets = LinkingObjects(fromType: ASet.self, property: "jokes")
     
@@ -29,9 +29,9 @@ class Joke: Object {
         self.jokeID = jokeID
         self.title = title
         self.body = body
-        self.duration.value = duration
-        self.dateCreated = Date()
-        self.dateEdited = dateEdited
+        self.duration.value = 0
+        self.dateCreated = dateCreated
+        self.dateEdited = dateCreated
     }
     
     func durationString() -> String? {
@@ -41,18 +41,21 @@ class Joke: Object {
     }
     
     func dateEditedAsString() -> String{
+        print ("date edited")
         let myDF = DateFormatter()
         myDF.dateStyle = .medium
         myDF.dateFormat = "MM/dd/yyyy"
-        let theDate: NSDate = dateEdited! as NSDate
-        return myDF.string(from: theDate as Date)
+       let theDate: NSDate = dateEdited! as NSDate
+        return myDF.string(from: (theDate as NSDate) as Date)
     }
     
     func dateCreatedAsString() -> String{
+        print("date created")
         let myDF = DateFormatter()
         myDF.dateStyle = .medium
         myDF.dateFormat = "MM/dd/yy"
-        return myDF.string(from: dateEdited! as Date)
+        let theDate: NSDate = dateCreated! as NSDate
+        return myDF.string(from: (theDate as NSDate) as Date)
     }
     
     func CountOflinksToSetsAsString() -> String{

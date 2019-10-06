@@ -29,8 +29,12 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate{
         
         self.durationField.delegate = self
         
-        
         bodyView.delegate = self as? UITextViewDelegate
+        
+        updateJokeDisplay()
+    }
+    
+    func updateJokeDisplay(){
         
         titleField.text = displayJoke?.title
         
@@ -38,20 +42,29 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate{
 
         durationField.text = displayJoke?.durationString()
         
-        creatdField.text = "Created " +  (displayJoke?.dateCreatedAsString() ?? "")
-        
         lastEditedField.text = "Edited " + (displayJoke?.dateEditedAsString() ?? "")
-        
+  
+        creatdField.text = "Created " +  (displayJoke?.dateCreatedAsString() ?? "")
+       
         countOfSetsField.text = displayJoke?.CountOflinksToSetsAsString()
         
         reloadInputViews()
+        
     }
+    
     
     @IBAction func deleteButton(_ sender: UIBarButtonItem) {
         print("Delete")
     }
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
+        
+        displayJoke = Joke()
+        
+        RealmDB.shared.create(displayJoke!)
+        
+        updateJokeDisplay()
+        
         print("Add")
     }
     
