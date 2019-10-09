@@ -54,7 +54,11 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate{
     
     
     @IBAction func deleteButton(_ sender: UIBarButtonItem) {
-        print("Delete")
+        
+        self.navigationController?.popViewController(animated: true)
+        
+        RealmDB.shared.delete(displayJoke!)
+        
     }
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
@@ -68,26 +72,48 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate{
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
-       
-        if (text == "\n"){
+        
+            if (text == "\n"){
+                
+                if ((textView.text ?? "").isEmpty){
+                    
+                    displayEmptyStringAlert()
+                    
+                }else{
+                    
+                textView.resignFirstResponder()
             
-            textView.resignFirstResponder()
+                updateDBValues()
             
-            return updateDBValues()
-            
-        }
-        return true
+                return false
+                    
+                }
+            }
+        
+         return true
     }
     
    func  textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+    if ((textField.text ?? "").isEmpty){
+        
+        displayEmptyStringAlert ()
+        
+    }else{
         
         textField.resignFirstResponder()
-      
-        return updateDBValues()
+        
+        updateDBValues()
+        
+        return false
+        
+        }
     
-      }
+        return true
     
-    func updateDBValues() -> Bool{
+    }
+    
+    func updateDBValues(){
         
         let durationInteger = Int(durationField.text ?? "0")
         
@@ -99,10 +125,26 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate{
         
         RealmDB.shared.update(displayJoke!, with: dict)
         
-        return false
+    }
+    
+    func displayEmptyStringAlert () {
+            
+            let alert = UIAlertController(title: "The text field cannot be empty", message: "Please type some info.", preferredStyle: .alert)
+           
+            alert.addAction(UIAlertAction(title: "OK",style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
         
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool){
+        
+        if titleField.text?.isEmpty ?? true || bodyView.text.isEmpty {
+            
+            RealmDB.shared.delete(displayJoke!)
+            
+        }
+        
+    }
 }
 

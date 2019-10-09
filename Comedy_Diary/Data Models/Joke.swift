@@ -41,7 +41,6 @@ class Joke: Object {
     }
     
     func dateEditedAsString() -> String{
-        print ("date edited")
         let myDF = DateFormatter()
         myDF.dateStyle = .medium
         myDF.dateFormat = "MM/dd/yyyy"
@@ -50,7 +49,6 @@ class Joke: Object {
     }
     
     func dateCreatedAsString() -> String{
-        print("date created")
         let myDF = DateFormatter()
         myDF.dateStyle = .medium
         myDF.dateFormat = "MM/dd/yy"

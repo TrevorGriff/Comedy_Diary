@@ -39,7 +39,7 @@ class JokeListController : UIViewController {
     
     
     @IBAction func homeButton(_ sender: Any) {
-        print ("home")
+        
         dismiss(animated: true, completion: nil)
 
     }

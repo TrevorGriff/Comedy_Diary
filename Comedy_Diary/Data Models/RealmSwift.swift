@@ -21,7 +21,6 @@ class RealmDB{
     
     func create<T: Object>(_ object: T){
         
-    print(object)
         do{
             try realm.write{
                 realm.add(object)
@@ -34,7 +33,6 @@ class RealmDB{
 
     func update<T: Object>(_ object: T, with dictionary: [String: Any?]){
         
-        print(object)
         do{
             try realm.write {
                 for (key, value) in dictionary{
