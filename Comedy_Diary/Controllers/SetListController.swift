@@ -12,7 +12,10 @@ import RealmSwift
 
 class SetListRow: UITableViewCell{
     
-    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var numberOfJokesLabel: UILabel!
+    @IBOutlet weak var dateEditedLabel: UILabel!
     
 }
 
@@ -70,7 +73,10 @@ extension SetListController: UITableViewDataSource, UITableViewDelegate{
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseRow", for: indexPath) as! SetListRow
         
-        
+        cell.titleLabel.text = sets[indexPath.row].title
+        cell.durationLabel.text  = "0"
+        cell.dateEditedLabel.text = sets[indexPath.row].dateEditedString()
+        cell.numberOfJokesLabel.text = String(sets[indexPath.row].jokes.count)
         
         return cell
     }
