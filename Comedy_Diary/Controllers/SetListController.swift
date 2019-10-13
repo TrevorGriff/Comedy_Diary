@@ -19,7 +19,7 @@ class SetListRow: UITableViewCell{
     
 }
 
-class SetListController : UIViewController {
+class SetListController:  UIViewController {
 
     @IBOutlet weak var setTable: UITableView!
     
@@ -32,9 +32,9 @@ class SetListController : UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        setTable?.delegate = self as! UITableViewDelegate
+        setTable?.delegate = self
         
-        setTable?.dataSource = self as! UITableViewDataSource
+        setTable?.dataSource = self
         
         loadSets()
         
@@ -68,6 +68,7 @@ class SetListController : UIViewController {
         let action1 = UIAlertAction(title: "Add" , style: .default){ (action) in
            
             if !textField.text!.isEmpty {
+                
                 print(textField.text)
                 
                 let newSet = ASet()
@@ -90,28 +91,6 @@ class SetListController : UIViewController {
     }
     
     
-    @IBAction func deleteSetButton(_ sender: Any) {
-        
-        
-        let alert = UIAlertController(title: "Delete this Set?" , message: "", preferredStyle: .alert)
-        
-        alert.addTextField { (alertTextField) in
-            alertTextField.text = self.sets[self.setIndex].title
-        }
-        
-        let action1 = UIAlertAction(title: "Delete", style: .default) {(action) in}
-        alert.addAction(action1)
-        
-        let action2 = UIAlertAction(title: "Cancel", style: .default){(action) in}
-        alert.addAction(action2)
-        
-        present(alert, animated: true, completion: nil)
-        
-        
-        
-    }
-    
-    
     @IBAction func homeButton(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
@@ -129,13 +108,12 @@ extension SetListController: UITableViewDataSource, UITableViewDelegate{
         
     }
     
+//MARK       Specify reuse cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseRow", for: indexPath) as! SetListRow
         
         setIndex = indexPath.row
-        
-        print("set index  \(setIndex)  path row \(indexPath.row)")
         
         cell.titleLabel.text = sets[indexPath.row].title
         cell.durationLabel.text  = "0"
@@ -143,6 +121,16 @@ extension SetListController: UITableViewDataSource, UITableViewDelegate{
         cell.numberOfJokesLabel.text = String(sets[indexPath.row].jokes.count)
         
         return cell
+    }
+    
+//MARK          Delete on Swipe
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            RealmDB.shared.delete(sets[indexPath.row])
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
     
     

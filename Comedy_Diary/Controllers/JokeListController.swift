@@ -27,7 +27,7 @@ class JokeListController : UIViewController {
         
         jokeTable?.delegate = self
         
-       // print(realm.configuration.fileURL)
+        //print(realm.configuration.fileURL)
         
     }
     
