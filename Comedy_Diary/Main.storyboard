@@ -130,7 +130,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogl-OV-MdF">
-                                                    <rect key="frame" x="296" y="23" width="64" height="21"/>
+                                                    <rect key="frame" x="263" y="23" width="97" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -154,17 +154,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBG-hI-0L9">
+                                <rect key="frame" x="348" y="827" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qpc-N2-oF2"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Set List" id="3xL-Nw-O7L">
-                        <barButtonItem key="rightBarButtonItem" title="Home" id="Pxw-Ib-YO0">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="Pxw-Ib-YO0">
                             <connections>
                                 <action selector="homeButton:" destination="gjj-jp-e9m" id="yw4-uV-gks"/>
                             </connections>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="+" id="xxD-Jc-OFk">
+                                <connections>
+                                    <action selector="addSetButton:" destination="gjj-jp-e9m" id="bSn-ec-AXt"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="-" id="Jcu-6o-ZVX">
+                                <connections>
+                                    <action selector="deleteSetButton:" destination="gjj-jp-e9m" id="kyb-hq-4bJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -438,11 +455,11 @@
             </objects>
             <point key="canvasLocation" x="1766.6666666666667" y="-422.54464285714283"/>
         </scene>
-        <!--Item 2-->
+        <!--Joke List-->
         <scene sceneID="Z9a-HW-qeb">
             <objects>
                 <navigationController storyboardIdentifier="SetNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="600-QG-qc0" customClass="SetNavController" customModule="Comedy_Diary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="zjM-sd-ewA"/>
+                    <tabBarItem key="tabBarItem" title="Joke List" id="zjM-sd-ewA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="udm-AL-r2r">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

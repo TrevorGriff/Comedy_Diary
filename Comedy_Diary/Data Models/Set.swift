@@ -15,33 +15,35 @@ class ASet: Object{
     
     @objc dynamic var setID = UUID().uuidString
     @objc dynamic var title: String = ""
-    @objc dynamic var dateCreated: NSDate?
-    @objc dynamic var dateEdited: Date?
+    @objc dynamic var dateCreated: NSDate? =  NSDate()
+    @objc dynamic var dateEdited: NSDate? = Date() as NSDate
     let jokes = List<Joke>()
     
     //let jokes = LinkingObjects(fromType: Joke.self, property: "jokes")
     
-    convenience init(title: String, dateCreated: Date?, dateEdited: Date?){
+    convenience init(title: String, dateCreated: NSDate?, dateEdited: Date?){
         self.init()
         self.setID = setID
         self.title = title
-        self.dateCreated = NSDate()
-        self.dateEdited = dateEdited
+        self.dateCreated  = dateCreated
+        self.dateEdited = dateCreated
         
     }
     
     func dateCreatedString() -> String{
         let myDF = DateFormatter()
         myDF.dateStyle = .medium
-        let theDate: NSDate = dateCreated!
-        return myDF.string(from: theDate as Date)
+        myDF.dateFormat = "MM/dd/yyyy"
+        let theDate: NSDate = dateCreated! as NSDate
+        return myDF.string(from: (theDate as NSDate) as Date)
     }
     
     func dateEditedString() -> String{
         let myDF = DateFormatter()
         myDF.dateStyle = .medium
+        myDF.dateFormat = "MM/dd/yyyy"
         let theDate: NSDate = dateEdited! as NSDate
-        return myDF.string(from: theDate as Date)
+        return myDF.string(from: (theDate as NSDate) as Date)
     }
     
     

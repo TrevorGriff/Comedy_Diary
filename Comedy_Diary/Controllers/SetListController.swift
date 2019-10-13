@@ -27,6 +27,8 @@ class SetListController : UIViewController {
     
     lazy var sets = realm.objects(ASet.self)
     
+    var setIndex: Int = 0
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
@@ -52,6 +54,64 @@ class SetListController : UIViewController {
         
     }
     
+    @IBAction func addSetButton(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+       let alert = UIAlertController(title: "Add New Set" , message: "", preferredStyle: .alert)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Type name of new Set"
+            textField = alertTextField
+        }
+        
+        let action1 = UIAlertAction(title: "Add" , style: .default){ (action) in
+           
+            if !textField.text!.isEmpty {
+                print(textField.text)
+                
+                let newSet = ASet()
+                RealmDB.shared.create(newSet)
+                
+                let dict: [String: Any?] = ["title": textField.text]
+                RealmDB.shared.update(newSet, with: dict)
+                
+                self.setTable.reloadData()
+            }
+            
+        }
+        alert.addAction(action1)
+        
+        let action2 = UIAlertAction(title: "Cancel", style: .default){(action) in }
+        alert.addAction(action2)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    @IBAction func deleteSetButton(_ sender: Any) {
+        
+        
+        let alert = UIAlertController(title: "Delete this Set?" , message: "", preferredStyle: .alert)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.text = self.sets[self.setIndex].title
+        }
+        
+        let action1 = UIAlertAction(title: "Delete", style: .default) {(action) in}
+        alert.addAction(action1)
+        
+        let action2 = UIAlertAction(title: "Cancel", style: .default){(action) in}
+        alert.addAction(action2)
+        
+        present(alert, animated: true, completion: nil)
+        
+        
+        
+    }
+    
+    
     @IBAction func homeButton(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
@@ -72,6 +132,10 @@ extension SetListController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseRow", for: indexPath) as! SetListRow
+        
+        setIndex = indexPath.row
+        
+        print("set index  \(setIndex)  path row \(indexPath.row)")
         
         cell.titleLabel.text = sets[indexPath.row].title
         cell.durationLabel.text  = "0"
