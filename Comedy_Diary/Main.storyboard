@@ -157,6 +157,7 @@
                                             <outlet property="durationLabel" destination="NQr-vk-2OZ" id="YF5-2H-tWU"/>
                                             <outlet property="numberOfJokesLabel" destination="hhN-x4-2IZ" id="Shb-fo-UiJ"/>
                                             <outlet property="titleLabel" destination="Ej2-qk-wqj" id="I5h-L6-4mm"/>
+                                            <segue destination="lMR-dq-HAG" kind="show" id="gwr-mU-Wnl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -202,6 +203,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Hvd-QH-y7F"/>
                     </view>
+                    <navigationItem key="navigationItem" id="f1Z-BF-SER">
+                        <barButtonItem key="rightBarButtonItem" title="Home" style="plain" id="bXQ-hb-ZNt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NdL-Bd-apM">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Home"/>
+                                <connections>
+                                    <action selector="homeButton:" destination="lMR-dq-HAG" eventType="touchUpInside" id="pAV-Ae-Kbw"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rsA-Wt-nZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
