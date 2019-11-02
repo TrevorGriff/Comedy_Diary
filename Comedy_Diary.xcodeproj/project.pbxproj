@@ -21,7 +21,7 @@
 		63FFBD41233B0CD900E7B615 /* ShowTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD3A233B0CD900E7B615 /* ShowTimeController.swift */; };
 		63FFBD42233B0CD900E7B615 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD3B233B0CD900E7B615 /* MainTabController.swift */; };
 		63FFBD43233B0CD900E7B615 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD3C233B0CD900E7B615 /* HomeViewController.swift */; };
-		63FFBD47233B0D0400E7B615 /* RealmSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD44233B0D0300E7B615 /* RealmSwift.swift */; };
+		63FFBD47233B0D0400E7B615 /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD44233B0D0300E7B615 /* RealmDB.swift */; };
 		63FFBD48233B0D0400E7B615 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD45233B0D0300E7B615 /* Set.swift */; };
 		63FFBD49233B0D0400E7B615 /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD46233B0D0400E7B615 /* Joke.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +44,7 @@
 		63FFBD3A233B0CD900E7B615 /* ShowTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTimeController.swift; sourceTree = "<group>"; };
 		63FFBD3B233B0CD900E7B615 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		63FFBD3C233B0CD900E7B615 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		63FFBD44233B0D0300E7B615 /* RealmSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmSwift.swift; sourceTree = "<group>"; };
+		63FFBD44233B0D0300E7B615 /* RealmDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
 		63FFBD45233B0D0300E7B615 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		63FFBD46233B0D0400E7B615 /* Joke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
 		A7E9C3E0B29BE1FAD66C3910 /* Pods-Comedy_Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Comedy_Diary.debug.xcconfig"; path = "Target Support Files/Pods-Comedy_Diary/Pods-Comedy_Diary.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				63FFBD46233B0D0400E7B615 /* Joke.swift */,
-				63FFBD44233B0D0300E7B615 /* RealmSwift.swift */,
+				63FFBD44233B0D0300E7B615 /* RealmDB.swift */,
 				63FFBD45233B0D0300E7B615 /* Set.swift */,
 			);
 			path = "Data Models";
@@ -257,7 +257,7 @@
 				63FFBD3E233B0CD900E7B615 /* SetListController.swift in Sources */,
 				63FFBD3F233B0CD900E7B615 /* JokeController.swift in Sources */,
 				63FFBD40233B0CD900E7B615 /* SetContoller.swift in Sources */,
-				63FFBD47233B0D0400E7B615 /* RealmSwift.swift in Sources */,
+				63FFBD47233B0D0400E7B615 /* RealmDB.swift in Sources */,
 				63FFBD43233B0CD900E7B615 /* HomeViewController.swift in Sources */,
 				63FFBD42233B0CD900E7B615 /* MainTabController.swift in Sources */,
 				63FFBD48233B0D0400E7B615 /* Set.swift in Sources */,

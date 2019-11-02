@@ -113,14 +113,34 @@ extension SetListController: UITableViewDataSource, UITableViewDelegate{
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseRow", for: indexPath) as! SetListRow
         
-        setIndex = indexPath.row
+        let setIndex: Int = indexPath.row
         
         cell.titleLabel.text = sets[indexPath.row].title
-        cell.durationLabel.text  = "0"
+        //cell.durationLabel.text  = "0"
         cell.dateEditedLabel.text = sets[indexPath.row].dateEditedString()
         cell.numberOfJokesLabel.text = String(sets[indexPath.row].jokes.count)
+        cell.durationLabel.text = String(doTimingSum(setIndex: setIndex))
         
         return cell
+    }
+    
+    func doTimingSum(setIndex: Int) -> Int{
+        
+        let jokeArray: List = sets[setIndex].jokes
+        
+         var sum = 0
+        
+       // print("Array Count = \(String(describing: jokeArray?.count))")
+        
+        for joke in jokeArray{
+            
+            var duration = joke.duration.value
+            
+            sum  = (sum + (duration ?? 0))
+            
+        }
+        
+        return sum
     }
     
 //MARK          Delete on Swipe
@@ -133,5 +153,17 @@ extension SetListController: UITableViewDataSource, UITableViewDelegate{
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+          
+          let destinationVC = segue.destination as! SetController
+
+          if let indexPath = setTable!.indexPathForSelectedRow{
+              
+              let selectedSet = sets[indexPath.row]
+              
+            destinationVC.selectedSet = selectedSet
+
+          }
+    }
     
 }
