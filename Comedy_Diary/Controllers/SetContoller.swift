@@ -22,6 +22,7 @@ class SetController : UIViewController{
     private var num: Int = 0
     
     var selectedSet: ASet?
+    
     private var  activeJoke: Joke?
     
     lazy var  jokeArray = selectedSet?.jokes
@@ -29,6 +30,8 @@ class SetController : UIViewController{
     let realm = try! Realm()
     
     lazy var jokes = realm.objects(Joke.self)
+    
+    var displayFromList: Bool = false
     
     override func viewDidLoad(){
         
@@ -42,6 +45,7 @@ class SetController : UIViewController{
         
         //print(realm.configuration.fileURL)
         
+
     }
     
     @IBAction func SegmentTapped(_ sender: Any) {
@@ -51,22 +55,28 @@ class SetController : UIViewController{
         switch (seg) {
         case 0:
             print("List All")
+            displayFromList = false
             jokeListTable.reloadData()
             
         case 1:
             print("List Set")
             
-           let myArray = selectedSet?.jokes
-            
+            displayFromList = true
             
             jokeListTable.reloadData()
             
         case 2:
             print("List time")
+            
+            displayFromList = false
+            
             jokeListTable.reloadData()
             
         case 3:
             print("List searched")
+            
+            displayFromList = false
+            
             jokeListTable.reloadData()
             
         default:
@@ -94,15 +104,28 @@ class SetController : UIViewController{
 extension SetController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return jokes.count
+        if !displayFromList {
+            
+            return jokes.count
+            
+        }else{
+            
+            return jokeArray!.count
+            
+        }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let cell =  tableView.dequeueReusableCell(withIdentifier: "jokeTableRow", for: indexPath) as! JokeListCell
-        activeJoke = jokes[indexPath.row]
+        
+        if !displayFromList {
+            activeJoke = jokes[indexPath.row]
+        }else{
+            activeJoke = jokeArray![indexPath.row]
+        }
+        
         cell.titleLabel.text = activeJoke!.title
         cell.durationLabel.text = activeJoke!.durationString()
         
