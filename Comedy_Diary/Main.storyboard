@@ -287,7 +287,7 @@
                         <viewLayoutGuide key="safeArea" id="Hvd-QH-y7F"/>
                     </view>
                     <navigationItem key="navigationItem" title="The Set Title" id="f1Z-BF-SER">
-                        <barButtonItem key="rightBarButtonItem" title="Home" style="plain" id="bXQ-hb-ZNt">
+                        <barButtonItem key="leftBarButtonItem" title="Home" style="plain" id="bXQ-hb-ZNt">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NdL-Bd-apM">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -539,7 +539,7 @@
                         <viewLayoutGuide key="safeArea" id="N16-7h-G7H"/>
                     </view>
                     <navigationItem key="navigationItem" title="Joke List" id="YX8-I7-oiI">
-                        <barButtonItem key="rightBarButtonItem" title="Home" style="plain" id="OhL-SM-w79" customClass="homeButton">
+                        <barButtonItem key="leftBarButtonItem" title="Home" style="plain" id="OhL-SM-w79" customClass="homeButton">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HcN-7u-h4y">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

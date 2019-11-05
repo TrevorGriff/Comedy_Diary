@@ -66,7 +66,7 @@ class SetController : UIViewController{
             jokeListTable.reloadData()
             
         case 2:
-            print("List time")
+            print("List duration")
             
             displayFromList = false
             

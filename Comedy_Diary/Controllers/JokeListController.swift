@@ -59,13 +59,25 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
         
         return cell
         
-        
     }
     
     
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-           return jokes.count
+            
+            if jokes.count > 0 {
+                
+                return jokes.count
+                
+            } else {
+                
+                let firstJoke = Joke()
+                firstJoke.title = "Select here to create your first joke"
+                firstJoke.body = "Body of Joke"
+                RealmDB.shared.create(firstJoke)
+                
+                return jokes.count
+            }
+        
        }
 
        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
