@@ -33,6 +33,14 @@ class SetController : UIViewController{
     
     var displayFromList: Bool = false
     
+    var minTime: Int = 0
+    var maxTime: Int = 0
+    
+    var theMax: String = "0"
+    var theMin: String = "0"
+    
+
+    
     override func viewDidLoad(){
         
         super.viewDidLoad()
@@ -43,7 +51,7 @@ class SetController : UIViewController{
         
         jokeListTable?.delegate = self as? UITableViewDelegate
         
-        //print(realm.configuration.fileURL)
+        print(realm.configuration.fileURL)
         
 
     }
@@ -55,18 +63,28 @@ class SetController : UIViewController{
         switch (seg) {
         case 0:
             print("List All")
+            jokes = realm.objects(Joke.self)
             displayFromList = false
             jokeListTable.reloadData()
             
         case 1:
-            print("List Set")
+           // print("List Set")
             
             displayFromList = true
             
             jokeListTable.reloadData()
             
         case 2:
-            print("List duration")
+            
+            
+            let predicate = NSPredicate ( format: "duration >= %d && duration <= %d " , minTime, maxTime)
+            
+            jokes = realm.objects(Joke.self).filter(predicate)
+            
+            //print("joke.Count after search: \(jokes.count)")
+            
+            //print("Search results: \(jokes)")'
+            getSearchCriteria()
             
             displayFromList = false
             
@@ -83,6 +101,45 @@ class SetController : UIViewController{
             print ("No selection")
         }
         
+    }
+    
+    func getSearchCriteria(){
+        
+       // let maxField: UITextField = UITextField()
+        //let minField: UITextField = UITextField()
+        
+        let alert = UIAlertController(title: "Enter Duration Range" , message: "", preferredStyle: .alert)
+        
+        alert.addTextField (configurationHandler: { textField  in
+            
+            textField.placeholder = "Max"
+            
+        })
+        
+        alert.addTextField (configurationHandler: { textField  in
+            
+            textField.placeholder = "Min"
+            
+        })
+
+        
+        let searchAction = UIAlertAction(title: "Search", style: .default){ action in
+            
+            self.maxTime = Int (alert.textFields![0].text!)!
+            
+            self.minTime = Int(alert.textFields![1].text!)!
+            
+            print("\(self.maxTime)  ...\(self.minTime) ")
+            
+        }
+                
+        alert.addAction(searchAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default){(action) in }
+        
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func homeButton(_ sender: Any) {
@@ -104,6 +161,9 @@ class SetController : UIViewController{
 extension SetController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print("joke.Count: \(jokes.count)")
+        
         if !displayFromList {
             
             return jokes.count
@@ -137,8 +197,6 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
         
        timingSumField.text = String(doTimingSum())
         
-        print("count \(selectedSet?.jokes.count)" )
-        
         num = (selectedSet?.jokes.count)!
         
         NumOfJokesInSet.text = String(num)
@@ -147,8 +205,6 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func  isJokeListedInSet(_ activeJoke: Joke)->Bool{
-        
-        //print("count : \(jokeArray?.count)")
         
         for (index, joke ) in (jokeArray?.enumerated())! {
 
@@ -185,7 +241,6 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
     func doTimingSum() -> Int{
         
          var sum = 0
-        print("Array Count = \(String(describing: jokeArray?.count))")
         
         for joke in jokeArray!{
             

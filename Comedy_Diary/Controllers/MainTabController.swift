@@ -11,6 +11,10 @@ import UIKit
 
 class MainTabController : UITabBarController {
     
+    @IBOutlet weak var showtimeOnTab: UITabBar!
+    @IBOutlet weak var setListOnTab: UITabBar!
+    @IBOutlet weak var jokeListOnTab: UITabBar!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()

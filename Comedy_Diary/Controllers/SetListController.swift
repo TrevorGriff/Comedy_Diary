@@ -69,7 +69,7 @@ class SetListController:  UIViewController {
            
             if !textField.text!.isEmpty {
                 
-                print(textField.text)
+                //print(textField.text)
                 
                 let newSet = ASet()
                 RealmDB.shared.create(newSet)
