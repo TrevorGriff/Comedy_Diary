@@ -10,7 +10,7 @@
 import UIKit
 import RealmSwift
 
-class SetController : UIViewController{
+class SetController : UIViewController {
     
     @IBOutlet weak var segmentBar: UISegmentedControl!
     @IBOutlet weak var NumOfJokesInSet: UILabel!
@@ -33,13 +33,8 @@ class SetController : UIViewController{
     
     var displayFromList: Bool = false
     
-    var minTime: Int = 0
-    var maxTime: Int = 0
     
-    var theMax: String = "0"
-    var theMin: String = "0"
-    
-
+    var times: Array<Int> = [0,0]
     
     override func viewDidLoad(){
         
@@ -76,15 +71,19 @@ class SetController : UIViewController{
             
         case 2:
             
+           // var times: [Int] = [0,0]
             
-            let predicate = NSPredicate ( format: "duration >= %d && duration <= %d " , minTime, maxTime)
+            times = getSearchCriteria()
             
-            jokes = realm.objects(Joke.self).filter(predicate)
+            print("min: \(times[0]) max: \(times[1])")
             
-            //print("joke.Count after search: \(jokes.count)")
-            
-            //print("Search results: \(jokes)")'
-            getSearchCriteria()
+//            let predicate = NSPredicate ( format: "duration >= %d && duration <= %d " , times[0],times[1])
+//
+//            jokes = realm.objects(Joke.self).filter(predicate)
+//
+//            print("joke.Count after search: \(jokes.count)")
+//
+//            print("Search results: \(jokes)")
             
             displayFromList = false
             
@@ -103,10 +102,7 @@ class SetController : UIViewController{
         
     }
     
-    func getSearchCriteria(){
-        
-       // let maxField: UITextField = UITextField()
-        //let minField: UITextField = UITextField()
+    func getSearchCriteria() -> Array<Int>{
         
         let alert = UIAlertController(title: "Enter Duration Range" , message: "", preferredStyle: .alert)
         
@@ -125,11 +121,19 @@ class SetController : UIViewController{
         
         let searchAction = UIAlertAction(title: "Search", style: .default){ action in
             
-            self.maxTime = Int (alert.textFields![0].text!)!
+            self.times[0] = Int (alert.textFields![0].text!)!
+
+            self.times[1] = Int(alert.textFields![1].text!)!
             
-            self.minTime = Int(alert.textFields![1].text!)!
+            print("\(self.times[0])  ... \(self.times[1]) ")
             
-            print("\(self.maxTime)  ...\(self.minTime) ")
+            let predicate = NSPredicate ( format: "duration >= %d && duration <= %d " , self.times[0], self.times[1])
+                      
+            self.jokes = self.realm.objects(Joke.self).filter(predicate)
+            
+            print(self.jokes)
+            
+            self.jokeListTable.reloadData()
             
         }
                 
@@ -140,6 +144,9 @@ class SetController : UIViewController{
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
+        
+        return times
+        
     }
     
     @IBAction func homeButton(_ sender: Any) {
