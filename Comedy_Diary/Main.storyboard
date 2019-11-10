@@ -51,6 +51,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="jwk-LS-PMO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -452,12 +453,11 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <outlet property="jokeListOnTab" destination="4ES-NP-mEO" id="XJk-Tb-ByB"/>
-                        <outlet property="setListOnTab" destination="4ES-NP-mEO" id="rq1-XP-zYP"/>
-                        <outlet property="showtimeOnTab" destination="4ES-NP-mEO" id="uej-5j-35V"/>
+                        <outlet property="mainNavTabBar" destination="4ES-NP-mEO" id="CJc-Ru-k7E"/>
                         <segue destination="Ohe-We-mYk" kind="relationship" relationship="viewControllers" id="y5I-HW-lYT"/>
                         <segue destination="600-QG-qc0" kind="relationship" relationship="viewControllers" id="6J5-vZ-gue"/>
                         <segue destination="QrE-Qw-cs6" kind="relationship" relationship="viewControllers" id="I9D-1e-AJz"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="eEN-er-n9B"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eT8-XM-Nvm" userLabel="First Responder" sceneMemberID="firstResponder"/>

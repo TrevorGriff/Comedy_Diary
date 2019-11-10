@@ -11,13 +11,16 @@ import UIKit
 
 class MainTabController : UITabBarController {
     
-    @IBOutlet weak var showtimeOnTab: UITabBar!
-    @IBOutlet weak var setListOnTab: UITabBar!
-    @IBOutlet weak var jokeListOnTab: UITabBar!
+    @IBOutlet weak var mainNavTabBar: UITabBar!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        mainNavTabBar.items?[0].title = "Joke List"
+        mainNavTabBar.items?[1].title = "Set List"
+        mainNavTabBar.items?[2].title = "Showtime"
+        mainNavTabBar.items?[3].title = "Home"
         
     }
 }
