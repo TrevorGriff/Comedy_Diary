@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate{
+class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate, UIToolbarDelegate{
    
+    @IBOutlet weak var jokeToolBar: UINavigationItem!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var bodyView: UITextView!
     @IBOutlet weak var creatdField: UITextField!
@@ -19,12 +20,26 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate{
     @IBOutlet weak var countOfSetsField: UITextField!
     @IBOutlet weak var durationField: UITextField!
     
+    @IBOutlet weak var addJokeButton: UIBarButtonItem!
+
+    @IBOutlet weak var deleteJokeButton: UIBarButtonItem!
+    
     var displayJoke: Joke?
     
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fontSize:CGFloat = 20
+        
+        let font:UIFont = UIFont.systemFont(ofSize: fontSize)
+        
+        let jokeButtonStyle = [NSAttributedString.Key.font: font]
+        
+        addJokeButton.setTitleTextAttributes(jokeButtonStyle, for: UIControl.State.normal)
             
+        deleteJokeButton.setTitleTextAttributes(jokeButtonStyle, for: UIControl.State.normal)
+        
         self.titleField.delegate = self
         
         self.durationField.delegate = self

@@ -19,6 +19,7 @@ class SetController : UIViewController {
     @IBOutlet weak var jokeListTable: UITableView!
     
     private var timingSum: Int = 0
+    
     private var num: Int = 0
     
     var selectedSet: ASet?
@@ -33,7 +34,6 @@ class SetController : UIViewController {
     
     var displayFromList: Bool = false
     
-    
     var times: Array<Int> = [0,0]
     
     override func viewDidLoad(){
@@ -46,8 +46,7 @@ class SetController : UIViewController {
         
         jokeListTable?.delegate = self as? UITableViewDelegate
         
-        print(realm.configuration.fileURL)
-        
+        //print(realm.configuration.fileURL)
 
     }
     
@@ -56,14 +55,16 @@ class SetController : UIViewController {
        let seg = segmentBar.selectedSegmentIndex
         
         switch (seg) {
+            
         case 0:
-            print("List All")
+            
             jokes = realm.objects(Joke.self)
+            
             displayFromList = false
+            
             jokeListTable.reloadData()
             
         case 1:
-           // print("List Set")
             
             displayFromList = true
             
@@ -71,38 +72,42 @@ class SetController : UIViewController {
             
         case 2:
             
-           // var times: [Int] = [0,0]
-            
-            times = getSearchCriteria()
-            
-            print("min: \(times[0]) max: \(times[1])")
-            
-//            let predicate = NSPredicate ( format: "duration >= %d && duration <= %d " , times[0],times[1])
-//
-//            jokes = realm.objects(Joke.self).filter(predicate)
-//
-//            print("joke.Count after search: \(jokes.count)")
-//
-//            print("Search results: \(jokes)")
+            doSearchOnDuration()
             
             displayFromList = false
             
             jokeListTable.reloadData()
             
         case 3:
-            print("List searched")
             
+             doSearchOnTags()
+             
             displayFromList = false
             
             jokeListTable.reloadData()
             
         default:
+            
             print ("No selection")
+            
         }
         
     }
     
-    func getSearchCriteria() -> Array<Int>{
+    func doSearchOnTags(){
+        
+        
+//        let tagList = ["A","B"]
+        
+//         jokes = realm.objects(Joke.self)
+//
+//        let filteredArray = Array(jokes!).filter({Array($0.tags).map({$0.tagName}).sorted().joined().contains(jokes.sorted().joined())})
+        
+        
+    }
+    
+    
+    func doSearchOnDuration(){
         
         let alert = UIAlertController(title: "Enter Duration Range" , message: "", preferredStyle: .alert)
         
@@ -125,13 +130,9 @@ class SetController : UIViewController {
 
             self.times[1] = Int(alert.textFields![1].text!)!
             
-            print("\(self.times[0])  ... \(self.times[1]) ")
-            
             let predicate = NSPredicate ( format: "duration >= %d && duration <= %d " , self.times[0], self.times[1])
                       
             self.jokes = self.realm.objects(Joke.self).filter(predicate)
-            
-            print(self.jokes)
             
             self.jokeListTable.reloadData()
             
@@ -145,13 +146,10 @@ class SetController : UIViewController {
         
         self.present(alert, animated: true, completion: nil)
         
-        return times
-        
     }
     
     @IBAction func homeButton(_ sender: Any) {
         
-        print("home")
         dismiss(animated: true, completion: nil)
         
     }
@@ -168,8 +166,6 @@ class SetController : UIViewController {
 extension SetController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("joke.Count: \(jokes.count)")
         
         if !displayFromList {
             
@@ -188,18 +184,27 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
         let cell =  tableView.dequeueReusableCell(withIdentifier: "jokeTableRow", for: indexPath) as! JokeListCell
         
         if !displayFromList {
+            
             activeJoke = jokes[indexPath.row]
+            
         }else{
+            
             activeJoke = jokeArray![indexPath.row]
+            
         }
         
         cell.titleLabel.text = activeJoke!.title
+        
         cell.durationLabel.text = activeJoke!.durationString()
         
         if isJokeListedInSet(activeJoke!){
+            
             cell.accessoryType = .checkmark
+            
         }else{
+            
             cell.accessoryType = .none
+            
         }
         
        timingSumField.text = String(doTimingSum())
@@ -233,11 +238,13 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
         if cell.accessoryType == .none{
                        
                         cell.accessoryType = .checkmark
+            
                         appendJokeInSet(selectedJoke)
         
                     }else{
                 
                         cell.accessoryType = .none
+            
                         removeJokeInSet(selectedJoke)
         
                     }
@@ -251,7 +258,7 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
         
         for joke in jokeArray!{
             
-            var duration = joke.duration.value
+            let duration = joke.duration.value
             
             sum  = (sum + (duration ?? 0))
             
@@ -262,19 +269,17 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
     
     func appendJokeInSet(_ theJoke: Joke){
         
-        //print("add joke")
-        
         try! realm.write{
             
             selectedSet?.jokes.append(theJoke)
+            
             timingSumField.text = String (doTimingSum())
+            
         }
         
     }
     
     func removeJokeInSet(_ theJoke: Joke){
-        
-        print("0 remove joke" )
         
         let jokeArray = selectedSet?.jokes
         
@@ -285,6 +290,7 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
                 try! realm.write{
                     
                     selectedSet?.jokes.remove(at: (index))
+                    
                     timingSumField.text = String (doTimingSum())
                     
                 }

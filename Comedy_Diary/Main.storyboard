@@ -289,7 +289,7 @@
                     <navigationItem key="navigationItem" title="The Set Title" id="f1Z-BF-SER">
                         <barButtonItem key="rightBarButtonItem" title="Home" style="plain" id="bXQ-hb-ZNt">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NdL-Bd-apM">
-                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Home"/>
                                 <connections>
@@ -339,7 +339,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Used by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgL-kg-yEN">
-                                <rect key="frame" x="241" y="112" width="63" height="696.5"/>
+                                <rect key="frame" x="241" y="112" width="63" height="745.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -407,7 +407,7 @@
                         <viewLayoutGuide key="safeArea" id="zUn-Xk-rF0"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="dQV-uz-Bit"/>
+                        <barButtonItem width="93" style="plain" systemItem="fixedSpace" id="dQV-uz-Bit"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Joke" id="odU-xq-e7H">
                         <rightBarButtonItems>
@@ -416,19 +416,23 @@
                                     <action selector="addButton:" destination="HdH-cT-SBJ" id="5lZ-iN-C2H"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="-" id="OoU-NE-dq2">
+                            <barButtonItem tag="1" title="-" id="OoU-NE-dq2">
                                 <connections>
                                     <action selector="deleteButton:" destination="HdH-cT-SBJ" id="srp-2Z-lsb"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem tag="2" title="Tag" id="Tsz-tZ-oTy"/>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addJokeButton" destination="JP3-IZ-umQ" id="g2n-4v-kkn"/>
                         <outlet property="bodyView" destination="4dY-SS-5Sz" id="NHE-Vu-NW9"/>
                         <outlet property="countOfSetsField" destination="UNJ-6R-UaF" id="NI4-wp-BEt"/>
                         <outlet property="creatdField" destination="gG6-gz-hRE" id="T4D-Hm-gvt"/>
+                        <outlet property="deleteJokeButton" destination="OoU-NE-dq2" id="YHh-6L-FSJ"/>
                         <outlet property="durationField" destination="DWU-bC-HI9" id="ZKh-AG-C1h"/>
+                        <outlet property="jokeToolBar" destination="odU-xq-e7H" id="8FQ-lw-IRx"/>
                         <outlet property="lastEditedField" destination="tse-BD-prC" id="1Vf-Jh-i2D"/>
                         <outlet property="titleField" destination="ZPr-Re-5YU" id="Un0-UY-aHD"/>
                     </connections>

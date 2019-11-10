@@ -30,7 +30,10 @@ class SetListController:  UIViewController {
     var setIndex: Int = 0
     
     override func viewDidLoad(){
+        
         super.viewDidLoad()
+        
+//        print(realm.configuration.fileURL)
         
         setTable?.delegate = self
         
@@ -68,8 +71,6 @@ class SetListController:  UIViewController {
         let action1 = UIAlertAction(title: "Add" , style: .default){ (action) in
            
             if !textField.text!.isEmpty {
-                
-                //print(textField.text)
                 
                 let newSet = ASet()
                 RealmDB.shared.create(newSet)
@@ -145,9 +146,13 @@ extension SetListController: UITableViewDataSource, UITableViewDelegate{
     
 //MARK          Delete on Swipe
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
+            
             RealmDB.shared.delete(sets[indexPath.row])
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
