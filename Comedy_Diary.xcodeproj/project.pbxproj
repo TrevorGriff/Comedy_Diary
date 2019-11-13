@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		15D9B1CDD1B032721F3E08CD /* Pods_Comedy_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481DD2847E7AD43D2572FCE5 /* Pods_Comedy_Diary.framework */; };
+		6384E96E237BABC100D3BC25 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6384E96D237BABC100D3BC25 /* Tags.swift */; };
+		63DF02EC2378B47800EC0192 /* TagListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF02EB2378B47800EC0192 /* TagListController.swift */; };
 		63FFBD1C233B0C7100E7B615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD1B233B0C7100E7B615 /* AppDelegate.swift */; };
 		63FFBD1E233B0C7100E7B615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD1D233B0C7100E7B615 /* SceneDelegate.swift */; };
 		63FFBD26233B0C7100E7B615 /* Comedy_Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD24233B0C7100E7B615 /* Comedy_Diary.xcdatamodeld */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		31B7F0F7B692A09C903C538C /* Pods-Comedy_Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Comedy_Diary.release.xcconfig"; path = "Target Support Files/Pods-Comedy_Diary/Pods-Comedy_Diary.release.xcconfig"; sourceTree = "<group>"; };
 		481DD2847E7AD43D2572FCE5 /* Pods_Comedy_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Comedy_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6384E96D237BABC100D3BC25 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tags.swift; path = Controllers/Tags.swift; sourceTree = "<group>"; };
+		63DF02EB2378B47800EC0192 /* TagListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagListController.swift; path = "Comedy_Diary/Data Models/TagListController.swift"; sourceTree = SOURCE_ROOT; };
 		63FFBD18233B0C7100E7B615 /* Comedy_Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comedy_Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63FFBD1B233B0C7100E7B615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63FFBD1D233B0C7100E7B615 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 				63FFBD4B233BFEF100E7B615 /* Controllers */,
 				63FFBD33233B0CB100E7B615 /* LaunchScreen.storyboard */,
 				63FFBD32233B0CB100E7B615 /* Main.storyboard */,
+				6384E96D237BABC100D3BC25 /* Tags.swift */,
 				63FFBD1B233B0C7100E7B615 /* AppDelegate.swift */,
 				63FFBD1D233B0C7100E7B615 /* SceneDelegate.swift */,
 				63FFBD27233B0C7100E7B615 /* Assets.xcassets */,
@@ -109,6 +114,7 @@
 		63FFBD4B233BFEF100E7B615 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				63DF02EB2378B47800EC0192 /* TagListController.swift */,
 				63FFBD3C233B0CD900E7B615 /* HomeViewController.swift */,
 				63FFBD38233B0CD900E7B615 /* JokeController.swift */,
 				63FFBD36233B0CD900E7B615 /* JokeListController.swift */,
@@ -254,11 +260,13 @@
 			files = (
 				63FFBD3D233B0CD900E7B615 /* JokeListController.swift in Sources */,
 				63FFBD1C233B0C7100E7B615 /* AppDelegate.swift in Sources */,
+				63DF02EC2378B47800EC0192 /* TagListController.swift in Sources */,
 				63FFBD3E233B0CD900E7B615 /* SetListController.swift in Sources */,
 				63FFBD3F233B0CD900E7B615 /* JokeController.swift in Sources */,
 				63FFBD40233B0CD900E7B615 /* SetContoller.swift in Sources */,
 				63FFBD47233B0D0400E7B615 /* RealmDB.swift in Sources */,
 				63FFBD43233B0CD900E7B615 /* HomeViewController.swift in Sources */,
+				6384E96E237BABC100D3BC25 /* Tags.swift in Sources */,
 				63FFBD42233B0CD900E7B615 /* MainTabController.swift in Sources */,
 				63FFBD48233B0D0400E7B615 /* Set.swift in Sources */,
 				63FFBD49233B0D0400E7B615 /* Joke.swift in Sources */,

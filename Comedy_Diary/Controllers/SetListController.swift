@@ -39,6 +39,8 @@ class SetListController:  UIViewController {
         
         setTable?.dataSource = self
         
+        setTable.rowHeight = 50
+        
         loadSets()
         
     }
@@ -88,13 +90,6 @@ class SetListController:  UIViewController {
         alert.addAction(action2)
         
         present(alert, animated: true, completion: nil)
-        
-    }
-    
-    
-    @IBAction func homeButton(_ sender: Any) {
-        
-        dismiss(animated: true, completion: nil)
         
     }
     

@@ -174,11 +174,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Set List" id="3xL-Nw-O7L">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="Pxw-Ib-YO0">
-                            <connections>
-                                <action selector="homeButton:" destination="gjj-jp-e9m" id="yw4-uV-gks"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="+" id="xxD-Jc-OFk">
                             <connections>
                                 <action selector="addSetButton:" destination="gjj-jp-e9m" id="bSn-ec-AXt"/>
@@ -287,18 +282,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Hvd-QH-y7F"/>
                     </view>
-                    <navigationItem key="navigationItem" title="The Set Title" id="f1Z-BF-SER">
-                        <barButtonItem key="rightBarButtonItem" title="Home" style="plain" id="bXQ-hb-ZNt">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NdL-Bd-apM">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Home"/>
-                                <connections>
-                                    <action selector="homeButton:" destination="lMR-dq-HAG" eventType="touchUpInside" id="pAV-Ae-Kbw"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="The Set Title" id="f1Z-BF-SER"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="NumOfJokesInSet" destination="teu-FO-Ffa" id="6VA-6p-Qx7"/>
@@ -422,7 +406,11 @@
                                     <action selector="deleteButton:" destination="HdH-cT-SBJ" id="srp-2Z-lsb"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem tag="2" title="Tag" id="Tsz-tZ-oTy"/>
+                            <barButtonItem tag="2" title="Tag" id="Tsz-tZ-oTy">
+                                <connections>
+                                    <segue destination="bLR-3U-Fk3" kind="show" id="BuA-9S-Ihz"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -441,6 +429,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7o0-wW-Xlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2721.739130434783" y="-421.20535714285711"/>
+        </scene>
+        <!--Tag List View-->
+        <scene sceneID="FCj-Da-HFh">
+            <objects>
+                <viewController id="bLR-3U-Fk3" userLabel="Tag List View" customClass="TagListController" customModule="Comedy_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r0n-uY-eGl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-7q-zbb" customClass="TagListView" customModule="TagListView">
+                                <rect key="frame" x="20" y="122" width="374" height="187"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                                        <color key="value" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tagSelectedBackgroundColor">
+                                        <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingX">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="marginY">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="marginX">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="enableRemoveButton" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="removeButtonIconSize">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="removeIconLineWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="VVA-JJ-PuF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ih4-ZZ-eo5">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="rc3-8f-wyh">
+                            <connections>
+                                <action selector="addTagButton:" destination="bLR-3U-Fk3" id="vqg-Bh-mC0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tagListView" destination="SIm-7q-zbb" id="dqD-aR-nEV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rsl-AU-HeU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3385.507246376812" y="-382.36607142857139"/>
         </scene>
         <!--Main Tab Controller-->
         <scene sceneID="Iua-as-I21">
@@ -495,15 +548,15 @@
                                 <rect key="frame" x="5" y="88" width="414" height="730"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReuseRow" rowHeight="45" id="xv5-hx-IHS" customClass="JokeListRow" customModule="Comedy_Diary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="45"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReuseRow" rowHeight="50" id="xv5-hx-IHS" customClass="JokeListRow" customModule="Comedy_Diary" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xv5-hx-IHS" id="WjZ-1g-yhq">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="dur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKh-tv-3pq">
-                                                    <rect key="frame" x="332" y="0.0" width="53" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKh-tv-3pq">
+                                                    <rect key="frame" x="332" y="0.0" width="53" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="53" id="Ns1-yy-JHf"/>
                                                     </constraints>
@@ -512,7 +565,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzm-eP-48f">
-                                                    <rect key="frame" x="20" y="6" width="294" height="33"/>
+                                                    <rect key="frame" x="20" y="6" width="294" height="56"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -528,6 +581,7 @@
                                                 <constraint firstItem="tzm-eP-48f" firstAttribute="leading" secondItem="WjZ-1g-yhq" secondAttribute="leadingMargin" id="pi1-HH-lfQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="durationFieldView" destination="kKh-tv-3pq" id="X1x-SD-jNk"/>
                                             <outlet property="titleFieldView" destination="tzm-eP-48f" id="N4J-O5-AZJ"/>
@@ -545,18 +599,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N16-7h-G7H"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Joke List" id="YX8-I7-oiI">
-                        <barButtonItem key="leftBarButtonItem" title="Home" style="plain" id="OhL-SM-w79" customClass="homeButton">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HcN-7u-h4y">
-                                <rect key="frame" x="20" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Home"/>
-                                <connections>
-                                    <action selector="homeButton:" destination="SrR-h5-sbA" eventType="primaryActionTriggered" id="FG8-Ue-r6t"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Joke List" id="YX8-I7-oiI"/>
                     <connections>
                         <outlet property="jokeTable" destination="gS8-Nu-1RA" id="AZJ-g7-hbe"/>
                         <segue destination="HdH-cT-SBJ" kind="show" identifier="jokeListToJoke" id="rhN-tc-4FW"/>

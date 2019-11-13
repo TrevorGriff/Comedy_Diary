@@ -27,6 +27,8 @@ class JokeListController : UIViewController {
         
         jokeTable?.delegate = self
         
+        jokeTable?.rowHeight = 40
+        
         print(realm.configuration.fileURL)
         
     }
@@ -35,13 +37,6 @@ class JokeListController : UIViewController {
 
         self.jokeTable?.reloadData()
         
-    }
-    
-    
-    @IBAction func homeButton(_ sender: Any) {
-        
-        dismiss(animated: true, completion: nil)
-
     }
     
     

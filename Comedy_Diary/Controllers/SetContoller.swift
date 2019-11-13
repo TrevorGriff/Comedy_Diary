@@ -148,12 +148,6 @@ class SetController : UIViewController {
         
     }
     
-    @IBAction func homeButton(_ sender: Any) {
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool){
 
         self.jokeListTable?.reloadData()
