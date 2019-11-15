@@ -161,5 +161,17 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         }
         
     }
+    
+    @IBAction func tagJoke(_ sender: Any) {
+        
+        var tagsView: UIView = UIView()
+        
+        let alert = UIAlertController(title: "Select Tag", message: "", preferredStyle: .alert)
+        
+//        alert.add
+//        let tagJokeAction: UItagsView
+        
+    }
+    
 }
 

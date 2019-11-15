@@ -66,8 +66,11 @@ class SetListController:  UIViewController {
        let alert = UIAlertController(title: "Add New Set" , message: "", preferredStyle: .alert)
         
         alert.addTextField { (alertTextField) in
+            
             alertTextField.placeholder = "Type name of new Set"
+            
             textField = alertTextField
+            
         }
         
         let action1 = UIAlertAction(title: "Add" , style: .default){ (action) in

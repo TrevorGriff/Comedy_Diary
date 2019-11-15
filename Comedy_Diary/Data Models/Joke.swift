@@ -61,6 +61,7 @@ class Joke: Object {
         
         let count: Int = sets.count
         return String(count)
+        
     }
 }
 
