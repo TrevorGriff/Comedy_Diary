@@ -50,6 +50,8 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
         getThisJokesTags()
         
+        getMasterListOfJokes()
+        
         updateJokeDisplay()
     }
     
@@ -183,18 +185,27 @@ extension JokeController: TagListViewDelegate{
     
     
     func getThisJokesTags(){
-        
+
         let tagArray = displayJoke!.tags
         
-        for (index, tag) in tagArray.enumerated(){
+        for (tag) in tagArray{
             
             jokeTags.addTag(tag.tagName)
             
             }
+    }
         
         func getMasterListOfJokes(){
             
+            let realm = try! Realm()
             
+            let tags = realm.objects(JokeTag.self)
+            
+            for tag in tags{
+            
+            masterListOfTags.addTag(tag.tagName)
+            
+            }
             
             
         }
@@ -202,5 +213,4 @@ extension JokeController: TagListViewDelegate{
         
     }
     
-}
 
