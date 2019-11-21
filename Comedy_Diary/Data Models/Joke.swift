@@ -21,7 +21,7 @@ class Joke: Object {
     var duration = RealmOptional<Int>()
     @objc dynamic var dateCreated: NSDate? = NSDate()
     @objc dynamic var dateEdited: NSDate? = Date() as NSDate
-    let tags = List<String>()
+    let tags = List<JokeTag>()
     
     let sets = LinkingObjects(fromType: ASet.self, property: "jokes")
     

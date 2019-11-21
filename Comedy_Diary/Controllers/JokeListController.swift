@@ -16,12 +16,14 @@ class JokeListController : UIViewController {
     @IBOutlet weak var jokeTable: UITableView?
     
     let realm = try! Realm()
-        
-    lazy var jokes = realm.objects(Joke.self)
+     
     
+    lazy var jokes = realm.objects(Joke.self)
     override func viewDidLoad(){
         
         super.viewDidLoad()
+        
+          print(realm.configuration.fileURL)
         
         jokeTable?.dataSource = self
         

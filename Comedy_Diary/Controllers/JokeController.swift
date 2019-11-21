@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RealmSwift
+import TagListView
 
 class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate, UIToolbarDelegate{
    
@@ -21,12 +22,13 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     @IBOutlet weak var durationField: UITextField!
     
     @IBOutlet weak var addJokeButton: UIBarButtonItem!
-
     @IBOutlet weak var deleteJokeButton: UIBarButtonItem!
+    
+    @IBOutlet weak var jokeTags: TagListView!
+    @IBOutlet weak var masterListOfTags: TagListView!
     
     var displayJoke: Joke?
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,6 +48,8 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
         bodyView.delegate = self as? UITextViewDelegate
         
+        getThisJokesTags()
+        
         updateJokeDisplay()
     }
     
@@ -57,9 +61,9 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
 
         durationField.text = displayJoke?.durationString()
         
-        lastEditedField.text = "Edited " + (displayJoke?.dateEditedAsString() ?? "")
+        lastEditedField.text =  (displayJoke?.dateEditedAsString() ?? "")
   
-        creatdField.text = "Created " +  (displayJoke?.dateCreatedAsString() ?? "")
+        creatdField.text = (displayJoke?.dateCreatedAsString() ?? "")
        
         countOfSetsField.text = displayJoke?.CountOflinksToSetsAsString()
         
@@ -136,7 +140,7 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
             
         let dict: [String: Any?] = ["title": titleField.text, "body": bodyView.text, "duration": durationInteger, "dateEdited": edited]
         
-        lastEditedField.text = "Edited " + (displayJoke?.dateEditedAsString() ?? "")
+        lastEditedField.text = (displayJoke?.dateEditedAsString() ?? "")
         
         RealmDB.shared.update(displayJoke!, with: dict)
         
@@ -170,6 +174,31 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
 //        alert.add
 //        let tagJokeAction: UItagsView
+        
+    }
+    
+}
+
+extension JokeController: TagListViewDelegate{
+    
+    
+    func getThisJokesTags(){
+        
+        let tagArray = displayJoke!.tags
+        
+        for (index, tag) in tagArray.enumerated(){
+            
+            jokeTags.addTag(tag.tagName)
+            
+            }
+        
+        func getMasterListOfJokes(){
+            
+            
+            
+            
+        }
+        
         
     }
     
