@@ -18,6 +18,8 @@ class TagListController: UIViewController , TagListViewDelegate{
     
     @IBOutlet weak var tagListView: TagListView!
     
+    @IBOutlet weak var jokeTags: TagListView!
+    
     override func viewDidLoad() {
            super.viewDidLoad()
         
@@ -100,6 +102,13 @@ class TagListController: UIViewController , TagListViewDelegate{
     
     }
     
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print("tagged pressed")
+         tagView.isSelected = !tagView.isSelected
+        
+        print("Title: \(title), TagView: \(tagView), TagListView: \(sender) ")
+        jokeTags.addTag(title)
+    }
     
         
 }

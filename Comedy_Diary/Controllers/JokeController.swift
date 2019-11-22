@@ -27,7 +27,10 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     @IBOutlet weak var jokeTags: TagListView!
     @IBOutlet weak var masterListOfTags: TagListView!
     
+    let realm = try! Realm()
+    var tagMasterList: Results<JokeTag>? = nil
     var displayJoke: Joke?
+    var tagArray: List<JokeTag>? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +49,17 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
         self.durationField.delegate = self
         
+        masterListOfTags.delegate = self
+        
+        
+        
+        jokeTags.delegate = self
+        
+        doTagFormatting()
+        
         bodyView.delegate = self as? UITextViewDelegate
+        
+        tagArray = displayJoke!.tags
         
         getThisJokesTags()
         
@@ -168,49 +181,110 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
     }
     
-    @IBAction func tagJoke(_ sender: Any) {
-        
-        var tagsView: UIView = UIView()
-        
-        let alert = UIAlertController(title: "Select Tag", message: "", preferredStyle: .alert)
-        
-//        alert.add
-//        let tagJokeAction: UItagsView
-        
-    }
-    
 }
 
 extension JokeController: TagListViewDelegate{
     
+    func doTagFormatting(){
+        
+        jokeTags.cornerRadius = 10
+        
+        masterListOfTags.cornerRadius = 10
+        
+    }
+    
     
     func getThisJokesTags(){
 
-        let tagArray = displayJoke!.tags
-        
-        for (tag) in tagArray{
+        for tag in tagArray!{
             
             jokeTags.addTag(tag.tagName)
             
             }
     }
         
-        func getMasterListOfJokes(){
+    func getMasterListOfJokes(){
+    
+    
+        tagMasterList = realm.objects(JokeTag.self)
             
-            let realm = try! Realm()
+        for tag in tagMasterList!{
             
-            let tags = realm.objects(JokeTag.self)
-            
-            for tag in tags{
-            
-            masterListOfTags.addTag(tag.tagName)
+                masterListOfTags.addTag(tag.tagName)
             
             }
             
+        }
+    
+//    @IBAction func tagJoke(_ sender: Any) {
+//
+//            let tagsView: UIView = UIView()
+//
+//            let alert = UIAlertController(title: "Select Tag", message: "", preferredStyle: .alert)
+//
+//    //        alert.add
+//    //        let tagJokeAction: UItagsView
+//
+//        }
+        
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+
+        //print("tag pressed: \(sender)  == \(masterListOfTags)")
+        
+        var doNotAdd: Bool = false
+        
+        if sender == masterListOfTags {
+            
+            print("match")
+            
+            for tag in tagArray!{
+            
+                if (tag.tagName == title) {
+                    
+                   print("flag 1 = \(doNotAdd)")
+                    
+                   doNotAdd = true
+                
+                }
+                
+            }
+            if !doNotAdd {
+                          
+                // Same object from master list
+                
+                for tag in tagMasterList! {
+                    
+                    if (tag.tagName == title) {
+                        
+                        try! realm.write{
+                            
+                             jokeTags.addTag(title)
+                            
+                            displayJoke!.tags.append(tag)
+                            
+                            print("flag 2 = \(doNotAdd)")
+                            
+                            doNotAdd = false
+                        }
+
+                    }
+                    
+                }
+                
+            }
             
         }
-        
-        
+
     }
+
+    func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print("remove tag pressed: \(sender)  == \(jokeTags)")
+        if sender == jokeTags{
+            print("matched remove")
+            sender.removeTagView(tagView)
+        }
+    }
+    
+}
     
 
