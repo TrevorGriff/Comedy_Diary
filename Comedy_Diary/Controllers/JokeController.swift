@@ -181,6 +181,21 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
     }
     
+//    @IBAction func addTagsTapped(_ sender: Any) {
+//        
+//        let tagListController = storyboard?.instantiateViewController(withIdentifier: "TagListController")
+//        
+//    
+//        
+//        tagListController?.modalPresentationStyle
+//        
+//        tagListController?.show(tagListController!, sender: addTagsTapped)
+//        
+//        present(tagListController!, animated: true, completion: nil)
+//        
+//    }
+    
+    
 }
 
 extension JokeController: TagListViewDelegate{
@@ -204,7 +219,6 @@ extension JokeController: TagListViewDelegate{
     }
         
     func getMasterListOfJokes(){
-    
     
         tagMasterList = realm.objects(JokeTag.self)
             
@@ -258,13 +272,14 @@ extension JokeController: TagListViewDelegate{
                         
                         try! realm.write{
                             
-                             jokeTags.addTag(title)
+                            jokeTags.addTag(title)
                             
                             displayJoke!.tags.append(tag)
                             
                             print("flag 2 = \(doNotAdd)")
                             
                             doNotAdd = false
+                            
                         }
 
                     }
@@ -280,8 +295,23 @@ extension JokeController: TagListViewDelegate{
     func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("remove tag pressed: \(sender)  == \(jokeTags)")
         if sender == jokeTags{
-            print("matched remove")
-            sender.removeTagView(tagView)
+            
+            for (index, tag) in (displayJoke?.tags.enumerated())! {
+            
+                if (tag.tagName == title) {
+                
+                    try! realm.write{
+                    
+                        displayJoke!.tags.remove(at: index)
+                        
+                        sender.removeTagView(tagView)
+
+                    }
+
+                }
+            
+            }
+            
         }
     }
     
