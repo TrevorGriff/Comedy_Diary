@@ -51,8 +51,6 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
         masterListOfTags.delegate = self
         
-        
-        
         jokeTags.delegate = self
         
         doTagFormatting()
@@ -61,9 +59,9 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
         tagArray = displayJoke!.tags
         
-        getThisJokesTags()
+        //getThisJokesTags()
         
-        getMasterListOfJokes()
+        //getMasterListOfJokes()
         
         updateJokeDisplay()
     }
@@ -129,19 +127,19 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     
    func  textFieldShouldReturn(_ textField: UITextField) -> Bool {
     
-    if ((textField.text ?? "").isEmpty){
-        
-        displayEmptyStringAlert ()
-        
-    }else{
-        
-        textField.resignFirstResponder()
-        
-        updateDBValues()
-        
-        return false
-        
-        }
+        if ((textField.text ?? "").isEmpty){
+            
+            displayEmptyStringAlert ()
+            
+        }else{
+            
+            textField.resignFirstResponder()
+            
+            updateDBValues()
+            
+            return false
+            
+            }
     
         return true
     
@@ -181,21 +179,6 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
     }
     
-//    @IBAction func addTagsTapped(_ sender: Any) {
-//        
-//        let tagListController = storyboard?.instantiateViewController(withIdentifier: "TagListController")
-//        
-//    
-//        
-//        tagListController?.modalPresentationStyle
-//        
-//        tagListController?.show(tagListController!, sender: addTagsTapped)
-//        
-//        present(tagListController!, animated: true, completion: nil)
-//        
-//    }
-    
-    
 }
 
 extension JokeController: TagListViewDelegate{
@@ -229,17 +212,6 @@ extension JokeController: TagListViewDelegate{
             }
             
         }
-    
-//    @IBAction func tagJoke(_ sender: Any) {
-//
-//            let tagsView: UIView = UIView()
-//
-//            let alert = UIAlertController(title: "Select Tag", message: "", preferredStyle: .alert)
-//
-//    //        alert.add
-//    //        let tagJokeAction: UItagsView
-//
-//        }
         
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
 
@@ -294,6 +266,7 @@ extension JokeController: TagListViewDelegate{
 
     func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("remove tag pressed: \(sender)  == \(jokeTags)")
+        
         if sender == jokeTags{
             
             for (index, tag) in (displayJoke?.tags.enumerated())! {
@@ -314,7 +287,13 @@ extension JokeController: TagListViewDelegate{
             
         }
     }
-    
+
+    override func viewWillAppear(_ animated: Bool){
+        masterListOfTags.removeAllTags()
+        jokeTags.removeAllTags()
+        getMasterListOfJokes()
+        getThisJokesTags()
+    }
 }
     
 

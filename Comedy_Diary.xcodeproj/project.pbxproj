@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15D9B1CDD1B032721F3E08CD /* Pods_Comedy_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481DD2847E7AD43D2572FCE5 /* Pods_Comedy_Diary.framework */; };
-		6384E96E237BABC100D3BC25 /* JokeTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6384E96D237BABC100D3BC25 /* JokeTags.swift */; };
+		6384E96E237BABC100D3BC25 /* JokeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6384E96D237BABC100D3BC25 /* JokeTag.swift */; };
 		63DF02EC2378B47800EC0192 /* TagListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF02EB2378B47800EC0192 /* TagListController.swift */; };
 		63FFBD1C233B0C7100E7B615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD1B233B0C7100E7B615 /* AppDelegate.swift */; };
 		63FFBD1E233B0C7100E7B615 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFBD1D233B0C7100E7B615 /* SceneDelegate.swift */; };
@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		31B7F0F7B692A09C903C538C /* Pods-Comedy_Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Comedy_Diary.release.xcconfig"; path = "Target Support Files/Pods-Comedy_Diary/Pods-Comedy_Diary.release.xcconfig"; sourceTree = "<group>"; };
 		481DD2847E7AD43D2572FCE5 /* Pods_Comedy_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Comedy_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6384E96D237BABC100D3BC25 /* JokeTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeTags.swift; sourceTree = "<group>"; };
+		6384E96D237BABC100D3BC25 /* JokeTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeTag.swift; sourceTree = "<group>"; };
 		63DF02EB2378B47800EC0192 /* TagListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagListController.swift; path = "Comedy_Diary/Data Models/TagListController.swift"; sourceTree = SOURCE_ROOT; };
 		63FFBD18233B0C7100E7B615 /* Comedy_Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comedy_Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63FFBD1B233B0C7100E7B615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 			children = (
 				63FFBD46233B0D0400E7B615 /* Joke.swift */,
 				63FFBD44233B0D0300E7B615 /* RealmDB.swift */,
-				6384E96D237BABC100D3BC25 /* JokeTags.swift */,
+				6384E96D237BABC100D3BC25 /* JokeTag.swift */,
 				63FFBD45233B0D0300E7B615 /* Set.swift */,
 			);
 			path = "Data Models";
@@ -266,7 +266,7 @@
 				63FFBD40233B0CD900E7B615 /* SetContoller.swift in Sources */,
 				63FFBD47233B0D0400E7B615 /* RealmDB.swift in Sources */,
 				63FFBD43233B0CD900E7B615 /* HomeViewController.swift in Sources */,
-				6384E96E237BABC100D3BC25 /* JokeTags.swift in Sources */,
+				6384E96E237BABC100D3BC25 /* JokeTag.swift in Sources */,
 				63FFBD42233B0CD900E7B615 /* MainTabController.swift in Sources */,
 				63FFBD48233B0D0400E7B615 /* Set.swift in Sources */,
 				63FFBD49233B0D0400E7B615 /* Joke.swift in Sources */,

@@ -23,7 +23,7 @@ class JokeListController : UIViewController {
         
         super.viewDidLoad()
         
-          print(realm.configuration.fileURL)
+        //  print(realm.configuration.fileURL)
         
         jokeTable?.dataSource = self
         
@@ -31,7 +31,7 @@ class JokeListController : UIViewController {
         
         jokeTable?.rowHeight = 40
         
-        print(realm.configuration.fileURL)
+       // print(realm.configuration.fileURL)
         
     }
     

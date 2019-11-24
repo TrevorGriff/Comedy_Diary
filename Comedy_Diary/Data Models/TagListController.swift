@@ -132,15 +132,14 @@ class TagListController: UIViewController , TagListViewDelegate, UITextFieldDele
 //        print("New title: \(textField.text)")
 //        print("old title: \(oldTitle)")
 //        print("tagIsSelected: \(tagIsSelected)")
+        let newTitle = textField.text
 //
-        if (!(oldTitle == textField.text) || !oldTitle.isEmpty || !textField.text!.isEmpty)
+        if (!(oldTitle == newTitle) || !oldTitle.isEmpty || newTitle!.isEmpty)
         && tagIsSelected{
-            
-                //print("Logic says it shouldn't be here")
             
                 self.tagListView.removeTag(oldTitle)
                         
-                self.tagListView.addTag(textField.text!)
+                self.tagListView.addTag(newTitle!)
             
                 tagNameField.text?.removeAll()
                         
@@ -148,8 +147,7 @@ class TagListController: UIViewController , TagListViewDelegate, UITextFieldDele
             
                 tagIsSelected = false
             
-// Mark
-            
+                updateTagsInDB(newTitle!, oldTitle)
                         
         }else{
             print ("in else statement")
@@ -159,6 +157,46 @@ class TagListController: UIViewController , TagListViewDelegate, UITextFieldDele
 
            return true
       }
+    
+    func updateTagsInDB(_ newTitle: String, _ oldTitle: String){
+        
+        // Find all instances of oldTitle
+        let jokes = realm.objects(Joke.self)
+        let newTag: JokeTag = JokeTag()
+        newTag.tagName = newTitle
+        
+        for joke in jokes{
+            
+            for jokeTag in jokes{
+                
+                for (index, tag) in jokeTag.tags.enumerated(){
+                    
+                    if (tag.tagName == oldTitle){
+                        
+                        try! realm.write{
+                            // update all jokes
+                            jokeTag.tags.remove(at: index)
+                            jokeTag.tags.append(newTag)
+                        }
+                    }
+                }
+            }
+            
+            let tags = realm.objects(JokeTag.self)
+            
+                for tag in tags{
+                
+                if (tag.tagName == oldTitle){
+                    
+                    //try! realm.write{
+                        RealmDB.shared.delete(tag)
+                        RealmDB.shared.create(newTag)
+                    //}
+                }
+                
+            }
+        }
+    }
     
 }
 
