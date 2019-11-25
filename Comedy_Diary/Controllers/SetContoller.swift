@@ -17,7 +17,7 @@ class SetController : UIViewController {
     @IBOutlet weak var timingSumField: UILabel!
     @IBOutlet weak var setTitleFrame: UINavigationItem!
     @IBOutlet weak var jokeListTable: UITableView!
-    
+  
     private var timingSum: Int = 0
     
     private var num: Int = 0
@@ -46,6 +46,7 @@ class SetController : UIViewController {
         
         jokeListTable?.delegate = self as? UITableViewDelegate
         
+
         //print(realm.configuration.fileURL)
 
     }

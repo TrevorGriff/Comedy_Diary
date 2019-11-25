@@ -35,7 +35,7 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fontSize:CGFloat = 20
+        let fontSize:CGFloat = 24
         
         let font:UIFont = UIFont.systemFont(ofSize: fontSize)
         
@@ -58,10 +58,6 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         bodyView.delegate = self as? UITextViewDelegate
         
         tagArray = displayJoke!.tags
-        
-        //getThisJokesTags()
-        
-        //getMasterListOfJokes()
         
         updateJokeDisplay()
     }
@@ -197,8 +193,8 @@ extension JokeController: TagListViewDelegate{
         for tag in tagArray!{
             
             jokeTags.addTag(tag.tagName)
-            
-            }
+                        
+        }
     }
         
     func getMasterListOfJokes(){
@@ -221,13 +217,9 @@ extension JokeController: TagListViewDelegate{
         
         if sender == masterListOfTags {
             
-            print("match")
-            
             for tag in tagArray!{
             
                 if (tag.tagName == title) {
-                    
-                   print("flag 1 = \(doNotAdd)")
                     
                    doNotAdd = true
                 
@@ -247,8 +239,6 @@ extension JokeController: TagListViewDelegate{
                             jokeTags.addTag(title)
                             
                             displayJoke!.tags.append(tag)
-                            
-                            print("flag 2 = \(doNotAdd)")
                             
                             doNotAdd = false
                             
@@ -289,9 +279,13 @@ extension JokeController: TagListViewDelegate{
     }
 
     override func viewWillAppear(_ animated: Bool){
+        
         masterListOfTags.removeAllTags()
+        
         jokeTags.removeAllTags()
+        
         getMasterListOfJokes()
+        
         getThisJokesTags()
     }
 }

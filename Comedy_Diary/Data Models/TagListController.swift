@@ -17,9 +17,8 @@ class TagListController: UIViewController , TagListViewDelegate, UITextFieldDele
     lazy var  tagList = realm.objects(JokeTag.self)
     
     @IBOutlet weak var tagListView: TagListView!
-    
+    @IBOutlet weak var addTagButton: UIBarButtonItem!
     @IBOutlet weak var jokeTags: TagListView!
-    
     @IBOutlet weak var tagNameField: UITextField!
     
     var oldTitle = ""
@@ -35,6 +34,14 @@ class TagListController: UIViewController , TagListViewDelegate, UITextFieldDele
 
         }
         
+        let fontSize:CGFloat = 24
+        
+        let font:UIFont = UIFont.systemFont(ofSize: fontSize)
+        
+        let ButtonStyle = [NSAttributedString.Key.font: font]
+        
+        addTagButton.setTitleTextAttributes(ButtonStyle, for: UIControl.State.normal)
+
         tagListView.delegate = self
         
         tagNameField.delegate = self

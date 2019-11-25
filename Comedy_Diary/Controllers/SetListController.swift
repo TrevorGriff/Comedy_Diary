@@ -22,6 +22,7 @@ class SetListRow: UITableViewCell{
 class SetListController:  UIViewController {
 
     @IBOutlet weak var setTable: UITableView!
+    @IBOutlet weak var addSetButton: UIBarButtonItem!
     
     let realm = try! Realm()
     
@@ -40,6 +41,14 @@ class SetListController:  UIViewController {
         setTable?.dataSource = self
         
         setTable.rowHeight = 50
+        
+        let fontSize:CGFloat = 24
+               
+        let font:UIFont = UIFont.systemFont(ofSize: fontSize)
+               
+        let ButtonStyle = [NSAttributedString.Key.font: font]
+               
+        addSetButton.setTitleTextAttributes(ButtonStyle, for: UIControl.State.normal)
         
         loadSets()
         

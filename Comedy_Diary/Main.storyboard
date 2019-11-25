@@ -176,16 +176,18 @@
                     <navigationItem key="navigationItem" title="Set List" id="3xL-Nw-O7L">
                         <barButtonItem key="rightBarButtonItem" title="+" id="xxD-Jc-OFk">
                             <connections>
-                                <action selector="addSetButton:" destination="gjj-jp-e9m" id="bSn-ec-AXt"/>
+                                <action selector="addSetButton:" destination="x9e-uS-HOQ" id="A0r-kL-ujK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addSetButton" destination="xxD-Jc-OFk" id="QDY-ZK-mDh"/>
                         <outlet property="setTable" destination="XAN-t6-7Nz" id="9Tj-16-hcg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ng6-d0-WVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="x9e-uS-HOQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1789.8550724637682" y="282.58928571428572"/>
         </scene>
@@ -370,7 +372,7 @@
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffa-wy-cim" customClass="TagListView" customModule="TagListView">
                                 <rect key="frame" x="44.5" y="525" width="341" height="91"/>
@@ -575,7 +577,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tag Name" borderStyle="bezel" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tA3-Xg-D25">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Tag Name" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tA3-Xg-D25">
                                 <rect key="frame" x="142" y="454" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -593,6 +595,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addTagButton" destination="rc3-8f-wyh" id="MvR-EX-uu0"/>
                         <outlet property="tagListView" destination="SIm-7q-zbb" id="dqD-aR-nEV"/>
                         <outlet property="tagNameField" destination="tA3-Xg-D25" id="oFQ-bW-gFr"/>
                     </connections>

@@ -17,6 +17,18 @@ class MainTabController : UITabBarController {
         
         super.viewDidLoad()
         
+        let fontSize:CGFloat = 18
+               
+        let font:UIFont = UIFont.systemFont(ofSize: fontSize)
+               
+        let ButtonStyle = [NSAttributedString.Key.font: font]
+               
+        mainNavTabBar.items?[0].setTitleTextAttributes(ButtonStyle, for: UIControl.State.normal)
+        mainNavTabBar.items?[1].setTitleTextAttributes(ButtonStyle, for: UIControl.State.normal)
+        mainNavTabBar.items?[2].setTitleTextAttributes(ButtonStyle, for: UIControl.State.normal)
+        mainNavTabBar.items?[3].setTitleTextAttributes(ButtonStyle, for: UIControl.State.normal)
+        
+        
         mainNavTabBar.items?[0].title = "Joke List"
         mainNavTabBar.items?[1].title = "Set List"
         mainNavTabBar.items?[2].title = "Showtime"
