@@ -9,15 +9,17 @@
 
 import UIKit
 import RealmSwift
+import TagListView
 
 class SetController : UIViewController {
     
     @IBOutlet weak var segmentBar: UISegmentedControl!
     @IBOutlet weak var NumOfJokesInSet: UILabel!
     @IBOutlet weak var timingSumField: UILabel!
-    @IBOutlet weak var setTitleFrame: UINavigationItem!
     @IBOutlet weak var jokeListTable: UITableView!
-  
+    @IBOutlet weak var setTitleField: UITextField!
+    @IBOutlet weak var masterTagField: TagListView!
+    
     private var timingSum: Int = 0
     
     private var num: Int = 0
@@ -40,7 +42,7 @@ class SetController : UIViewController {
         
         super.viewDidLoad()
         
-        setTitleFrame.title = selectedSet!.title
+        setTitleField.text = selectedSet!.title
         
         jokeListTable?.dataSource = self as? UITableViewDataSource
         
@@ -297,7 +299,10 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
     }
     
 }
-    
+
+extension SetController: TagListViewDelegate{
+        
+}
 
 class JokeListCell: UITableViewCell{
     
