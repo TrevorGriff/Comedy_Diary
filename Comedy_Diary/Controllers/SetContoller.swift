@@ -17,8 +17,9 @@ class SetController : UIViewController {
     @IBOutlet weak var NumOfJokesInSet: UILabel!
     @IBOutlet weak var timingSumField: UILabel!
     @IBOutlet weak var jokeListTable: UITableView!
-    @IBOutlet weak var setTitleField: UITextField!
     @IBOutlet weak var masterTagField: TagListView!
+    @IBOutlet weak var setTitleField: UITextField!
+    
     
     private var timingSum: Int = 0
     
@@ -42,13 +43,14 @@ class SetController : UIViewController {
         
         super.viewDidLoad()
         
-        setTitleField.text = selectedSet!.title
+       setTitleField.text = selectedSet!.title
         
         jokeListTable?.dataSource = self as? UITableViewDataSource
         
         jokeListTable?.delegate = self as? UITableViewDelegate
         
-
+        setTitleField?.delegate = self as UITextFieldDelegate
+        
         //print(realm.configuration.fileURL)
 
     }
@@ -302,6 +304,50 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
 
 extension SetController: TagListViewDelegate{
         
+}
+
+extension SetController: UITextFieldDelegate{
+ 
+    
+    func textFieldShouldReturn(_ textField: UITextField)-> Bool{
+
+        if ((textField.text ?? "").isEmpty){
+
+            displayEmptyStringAlert()
+
+        }else{
+
+            updateDBValues()
+
+            textField.resignFirstResponder()
+
+            return false
+
+        }
+
+        return true
+    }
+
+    func displayEmptyStringAlert(){
+
+        let alert = UIAlertController(title: "Text field cannot be empty", message: "Please type some info.", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+
+        self.present(alert, animated: true)
+
+    }
+
+    func updateDBValues(){
+
+        let edited = Date()
+
+        let dict: [String: Any?] = ["title": setTitleField.text, "dateEdited": edited]
+
+
+
+    }
+
 }
 
 class JokeListCell: UITableViewCell{
