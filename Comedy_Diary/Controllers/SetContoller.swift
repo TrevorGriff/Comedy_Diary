@@ -344,7 +344,7 @@ extension SetController: UITextFieldDelegate{
 
         let dict: [String: Any?] = ["title": setTitleField.text, "dateEdited": edited]
 
-
+        RealmDB.shared.update(selectedSet!, with: dict)
 
     }
 
