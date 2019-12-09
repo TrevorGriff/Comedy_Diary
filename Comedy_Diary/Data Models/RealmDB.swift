@@ -55,6 +55,18 @@ class RealmDB{
         }
     }
     
+    func getJokeTagsArray(_ joke: Joke) -> Array<JokeTag>{
+        var tags: [JokeTag] = []
+        tags  = Array(joke.tags)
+       return tags
+    }
+    
+    func getSetJokesArray(_ set: ASet) -> Array<Joke>{
+        var jokes: [Joke] = []
+        jokes = Array(set.jokes)
+        return jokes
+    }
+    
     func post(_ error: Error){
         NotificationCenter.default.post(name: NSNotification.Name("RealmError"), object: error)
     }

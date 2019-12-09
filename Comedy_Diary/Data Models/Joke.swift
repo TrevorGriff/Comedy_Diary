@@ -38,7 +38,6 @@ class Joke: Object {
     func durationString() -> String? {
         guard let duration = duration.value else { return "0"}
         return String(duration)
-            
     }
     
     func dateEditedAsString() -> String{
@@ -58,10 +57,9 @@ class Joke: Object {
     }
     
     func CountOflinksToSetsAsString() -> String{
-        
         let count: Int = sets.count
         return String(count)
-        
     }
+    
 }
 

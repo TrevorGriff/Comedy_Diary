@@ -16,6 +16,8 @@ class TagListController: UIViewController , TagListViewDelegate, UITextFieldDele
     
     lazy var  tagList = realm.objects(JokeTag.self)
     
+
+   // @IBOutlet weak var timePicker: UIPickerView!
     @IBOutlet weak var tagListView: TagListView!
     @IBOutlet weak var addTagButton: UIBarButtonItem!
     @IBOutlet weak var jokeTags: TagListView!
@@ -45,6 +47,14 @@ class TagListController: UIViewController , TagListViewDelegate, UITextFieldDele
         tagListView.delegate = self
         
         tagNameField.delegate = self
+        
+//        timePicker.delegate = self
+//
+//        timePicker.dataSource = self
+//
+//        // setting properties of the pickerVie
+//        timePicker.frame = CGRect(x: 100, y: 600, width: 100, height: 100)
+//        timePicker.backgroundColor = .white
 
         tagListView.textFont = UIFont.systemFont(ofSize: 14)
 
@@ -206,4 +216,29 @@ class TagListController: UIViewController , TagListViewDelegate, UITextFieldDele
     }
     
 }
+
+//extension TagListController: UIPickerViewDelegate, UIPickerViewDataSource{
+//
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 2
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return 60
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return String(format: "%02d", row)
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        if component == 0{
+//            let minute = row
+//            print("minute: \(minute)")
+//        }else{
+//            let second = row
+//            print("second: \(second)")
+//        }
+//    }
+//}
 

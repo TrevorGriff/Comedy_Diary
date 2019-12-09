@@ -10,6 +10,7 @@
 import UIKit
 import RealmSwift
 import TagListView
+import SwiftReorder
 
 class SetController : UIViewController {
     
@@ -50,6 +51,8 @@ class SetController : UIViewController {
         jokeListTable?.delegate = self as? UITableViewDelegate
         
         setTitleField?.delegate = self as UITextFieldDelegate
+        
+        jokeListTable.reorder.delegate = self as! TableViewReorderDelegate
         
         //print(realm.configuration.fileURL)
 
@@ -184,6 +187,10 @@ extension SetController: UITableViewDataSource,UITableViewDelegate{
         
         if !displayFromList {
             
+            if let spacer = tableView.reorder.spacerCell(for: indexPath) {
+                return spacer
+            }
+                
             activeJoke = jokes[indexPath.row]
             
         }else{
@@ -348,6 +355,20 @@ extension SetController: UITextFieldDelegate{
 
     }
 
+}
+
+extension SetController: TableViewReorderDelegate {
+    func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        let  jokeToMove = jokeArray![sourceIndexPath.row]
+        
+        try! realm.write{
+            
+            jokeArray?.remove(at: sourceIndexPath.row)
+            jokeArray?.insert(jokeToMove, at: destinationIndexPath.row)
+        }
+        // Update data model
+    }
 }
 
 class JokeListCell: UITableViewCell{

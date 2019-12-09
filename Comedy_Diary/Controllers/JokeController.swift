@@ -30,8 +30,28 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     let realm = try! Realm()
     var tagMasterList: Results<JokeTag>? = nil
     var displayJoke: Joke?
-    var tagArray: List<JokeTag>? = nil
+    var tagArray: [JokeTag] = []
+    //var tagArray: List<JokeTag>? = nil
     
+    var durationPicker = UIPickerView()
+    
+    let durationData: [String] = ["00", "01","02","03","04","05","06","07","08","09","10",
+        "11","12","13","14","15","16","17","18","19","20",
+        "21","22","23","24","25","26","27","28","29","30",
+        "31","32","33","34","35","36","37","38","39","40",
+        "41","42","43","44","45","46","47","48","49","50",
+        "51","52","53","54","55","56","57","58","59","60"]
+    
+    let durationSecData: [String] = ["00","10","20","30","40","50"]
+    
+    var minIndex = 1
+    var secIndex = 0
+    
+    @IBAction func upDateDuration(_ sender: Any) {
+        
+        durationField.inputView = durationPicker
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,22 +73,76 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
         jokeTags.delegate = self
         
+        durationField.inputView = durationPicker
+        durationField.delegate = self
+        durationPicker.delegate = self
+        durationPicker.dataSource = self
+        
+        setDoneButtonOnKeyboards()
+        
         doTagFormatting()
         
         bodyView.delegate = self as? UITextViewDelegate
+         
+        tagArray = RealmDB.shared.getJokeTagsArray(displayJoke!)
         
-        tagArray = displayJoke!.tags
+        //selecttagArray = displayJoke!.tags
         
         updateJokeDisplay()
     }
+    func setDoneButtonOnKeyboards(){
+        
+        
+        let keyboardToolBar = UIToolbar()
+            keyboardToolBar.sizeToFit()
+        
+//            let durationLabel = UILabel()
+//            durationLabel.text = "Joke Duration"
+//
+//            let keyboardlabel = UIBarButtonItem(customView: durationLabel)
+        
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem:
+                UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        
+            let doneButton = UIBarButtonItem(barButtonSystemItem:
+                UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.doneClicked) )
+             
+            keyboardToolBar.setItems([flexibleSpace, doneButton], animated: true)
+        
+            durationField.inputAccessoryView = keyboardToolBar
+            titleField.inputAccessoryView = keyboardToolBar
+            bodyView.inputAccessoryView = keyboardToolBar
+        }
+    
+    @objc func doneClicked() {
+        
+        view.endEditing(true)
+        updateDB()
+    }
+        
     
     func updateJokeDisplay(){
         
         titleField.text = displayJoke?.title
         
         bodyView.text = displayJoke?.body
+                             
+        let durationSecs = Int((displayJoke?.durationString())!)
+        
+        let time: Array = convertToMinAndSec(durationSecs!)
 
-        durationField.text = displayJoke?.durationString()
+       let minutes = String(format: "%02d", time[minIndex] )
+        
+       let seconds = String(format: "%02d", time[secIndex] )
+        
+        let displayString: String = makeMinAndSecStr(convertToMinAndSec(durationSecs!))
+    
+        //print("display \(displayString)")
+        
+        self.durationPicker.selectRow(time[secIndex],inComponent: 1, animated: false)
+        self.durationPicker.selectRow(time[minIndex],inComponent: 0, animated: false)
+        
+        durationField.text = displayString
         
         lastEditedField.text =  (displayJoke?.dateEditedAsString() ?? "")
   
@@ -99,51 +173,54 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
+//
+//            if (text == "\n"){
+//
+//                if ((textView.text ?? "").isEmpty){
+//
+//                    displayEmptyStringAlert()
+//
+//                }else{
+//
+//                textView.resignFirstResponder()
+//
+//                updateDBValues()
+//
+//                return false
+//
+//                }
+//            }
+//
+//         return true
+//    }
+    
+//   func  textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//
+//        if ((textField.text ?? "").isEmpty){
+//
+//            displayEmptyStringAlert ()
+//
+//        }else{
+//
+//            textField.resignFirstResponder()
+//
+//            updateDBValues()
+//
+//            return false
+//
+//            }
+//
+//        return true
+//
+//    }
+    
+    
+    func updateDB(){
         
-            if (text == "\n"){
-                
-                if ((textView.text ?? "").isEmpty){
-                    
-                    displayEmptyStringAlert()
-                    
-                }else{
-                    
-                textView.resignFirstResponder()
-            
-                updateDBValues()
-            
-                return false
-                    
-                }
-            }
+        //print("updateDB \(durationField.text)")
         
-         return true
-    }
-    
-   func  textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    
-        if ((textField.text ?? "").isEmpty){
-            
-            displayEmptyStringAlert ()
-            
-        }else{
-            
-            textField.resignFirstResponder()
-            
-            updateDBValues()
-            
-            return false
-            
-            }
-    
-        return true
-    
-    }
-    
-    func updateDBValues(){
-        
-        let durationInteger = Int(durationField.text ?? "0")
+        let durationInteger = ConvertToInteger(durationField.text!)
         
         let edited = Date()
             
@@ -153,6 +230,19 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
         RealmDB.shared.update(displayJoke!, with: dict)
         
+    }
+    
+    func  ConvertToInteger(_ displayStr: String) -> Int{
+        let index = displayStr.index(displayStr.startIndex, offsetBy: 2)
+        let mins = String(displayStr[..<index])
+       // print(displayStr)
+       // print("\(mins) mins")
+        let start = displayStr.index(displayStr.startIndex, offsetBy: 7)
+        let end =   displayStr.index(displayStr.endIndex, offsetBy: -4)
+        let range = start..<end
+        let secs = String(displayStr[range])
+        //print("\(secs) secs")
+        return (Int(mins)! * 60) + Int(secs)!
     }
     
     func displayEmptyStringAlert () {
@@ -189,8 +279,8 @@ extension JokeController: TagListViewDelegate{
     
     
     func getThisJokesTags(){
-
-        for tag in tagArray!{
+        
+        for tag in tagArray{
             
             jokeTags.addTag(tag.tagName)
                         
@@ -217,7 +307,7 @@ extension JokeController: TagListViewDelegate{
         
         if sender == masterListOfTags {
             
-            for tag in tagArray!{
+            for tag in tagArray{
             
                 if (tag.tagName == title) {
                     
@@ -288,6 +378,45 @@ extension JokeController: TagListViewDelegate{
         
         getThisJokesTags()
     }
-}
     
+    
+}
+extension JokeController: UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return durationData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return durationData[row]
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var secs = durationPicker.selectedRow(inComponent: 1).description
+        var mins = durationPicker.selectedRow(inComponent: 0).description
+        
+        print("secs: \(secs) index \(secIndex)  mins: \(mins) index \(minIndex)")
+        
+        mins = String(format: "%02d",(Int(mins)!))
+        secs = String(format: "%02d",(Int(secs)!))
+        
+        durationField.text = "\(mins) min \(secs) sec"
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 50
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 50
+    }
+    
+}
 
