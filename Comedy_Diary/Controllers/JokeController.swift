@@ -92,14 +92,8 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     }
     func setDoneButtonOnKeyboards(){
         
-        
         let keyboardToolBar = UIToolbar()
             keyboardToolBar.sizeToFit()
-        
-//            let durationLabel = UILabel()
-//            durationLabel.text = "Joke Duration"
-//
-//            let keyboardlabel = UIBarButtonItem(customView: durationLabel)
         
             let flexibleSpace = UIBarButtonItem(barButtonSystemItem:
                 UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
@@ -120,6 +114,28 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         updateDB()
     }
         
+    @IBAction func infoTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "JokeToInfo", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue?, sender: (Any)?){
+        
+        if segue?.identifier == "JokeToInfo"{
+            
+            let vc = segue?.destination as! JokeInfoController
+            
+            vc.displayJoke = displayJoke
+        }
+        
+    }
+    
+    
+    
+    @IBAction func editTagsTappped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "JokeToTags", sender: self)
+    }
     
     func updateJokeDisplay(){
         

@@ -49,36 +49,15 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseRow", for: indexPath) as! JokeListRow
 
         cell.titleFieldView.text = jokes[indexPath.row].title
-        
-        //cell.durationFieldView.text = jokes[indexPath.row].durationString()
-        
-        minAndSec = convertToMinAndSec(jokes[indexPath.row].duration as! Int)
+       
+        minAndSec = convertToMinAndSec(jokes[indexPath.row].duration.value!)
         
         cell.durationFieldView.text = makeMinAndSecStr(minAndSec)
         
         return cell
         
     }
-//    func formatDuration(_ seconds: Int) -> String{
-//        var displayString = ""
-//        let minIndex = 1
-//        let secIndex = 0
-//
-//        let time = convertDuration (seconds)
-//
-//            //print ("\(time[secIndex]) and \(time[minIndex])")
-//
-//            let minutes = String(format: "%02d", time[minIndex] )
-//
-//            let seconds = String(format: "%02d", time[secIndex] )
-//
-//            //print("\(minutes) and \(seconds)")
-//
-//            displayString = ("\(minutes) min \(seconds) sec")
-//
-//
-//        return displayString
-//    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             

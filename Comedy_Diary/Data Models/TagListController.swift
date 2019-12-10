@@ -48,14 +48,6 @@ class TagListController: UIViewController , TagListViewDelegate, UITextFieldDele
         
         tagNameField.delegate = self
         
-//        timePicker.delegate = self
-//
-//        timePicker.dataSource = self
-//
-//        // setting properties of the pickerVie
-//        timePicker.frame = CGRect(x: 100, y: 600, width: 100, height: 100)
-//        timePicker.backgroundColor = .white
-
         tagListView.textFont = UIFont.systemFont(ofSize: 14)
 
         tagListView.alignment = .center
