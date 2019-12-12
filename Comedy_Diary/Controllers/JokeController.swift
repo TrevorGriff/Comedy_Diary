@@ -16,9 +16,6 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     @IBOutlet weak var jokeToolBar: UINavigationItem!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var bodyView: UITextView!
-    @IBOutlet weak var creatdField: UITextField!
-    @IBOutlet weak var lastEditedField: UITextField!
-    @IBOutlet weak var countOfSetsField: UITextField!
     @IBOutlet weak var durationField: UITextField!
     
     @IBOutlet weak var addJokeButton: UIBarButtonItem!
@@ -31,7 +28,8 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     var tagMasterList: Results<JokeTag>? = nil
     var displayJoke: Joke?
     var tagArray: [JokeTag] = []
-    //var tagArray: List<JokeTag>? = nil
+    
+    var deleteTappedFlg = false
     
     var durationPicker = UIPickerView()
     
@@ -142,14 +140,14 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         titleField.text = displayJoke?.title
         
         bodyView.text = displayJoke?.body
-                             
+     
         let durationSecs = Int((displayJoke?.durationString())!)
         
         let time: Array = convertToMinAndSec(durationSecs!)
 
-       let minutes = String(format: "%02d", time[minIndex] )
+       //let minutes = String(format: "%02d", time[minIndex] )
         
-       let seconds = String(format: "%02d", time[secIndex] )
+        //let seconds = String(format: "%02d", time[secIndex] )
         
         let displayString: String = makeMinAndSecStr(convertToMinAndSec(durationSecs!))
     
@@ -160,12 +158,6 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
         
         durationField.text = displayString
         
-        lastEditedField.text =  (displayJoke?.dateEditedAsString() ?? "")
-  
-        creatdField.text = (displayJoke?.dateCreatedAsString() ?? "")
-       
-        countOfSetsField.text = displayJoke?.CountOflinksToSetsAsString()
-        
         reloadInputViews()
         
     }
@@ -173,64 +165,27 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     
     @IBAction func deleteButton(_ sender: UIBarButtonItem) {
         
-        self.navigationController?.popViewController(animated: true)
-        
         RealmDB.shared.delete(displayJoke!)
+        
+        deleteTappedFlg = true
+        
+         self.navigationController?.popViewController(animated: true)
         
     }
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         
         displayJoke = Joke()
-        
+        displayJoke?.title = "Type the Title of your joke here"
+        displayJoke?.body = "Type the rest of your Joke here"
+       
+        //print(displayJoke)
         RealmDB.shared.create(displayJoke!)
         
         updateJokeDisplay()
         
     }
-    
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
-//
-//            if (text == "\n"){
-//
-//                if ((textView.text ?? "").isEmpty){
-//
-//                    displayEmptyStringAlert()
-//
-//                }else{
-//
-//                textView.resignFirstResponder()
-//
-//                updateDBValues()
-//
-//                return false
-//
-//                }
-//            }
-//
-//         return true
-//    }
-    
-//   func  textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//
-//        if ((textField.text ?? "").isEmpty){
-//
-//            displayEmptyStringAlert ()
-//
-//        }else{
-//
-//            textField.resignFirstResponder()
-//
-//            updateDBValues()
-//
-//            return false
-//
-//            }
-//
-//        return true
-//
-//    }
-    
+     
     
     func updateDB(){
         
@@ -242,21 +197,25 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
             
         let dict: [String: Any?] = ["title": titleField.text, "body": bodyView.text, "duration": durationInteger, "dateEdited": edited]
         
-        lastEditedField.text = (displayJoke?.dateEditedAsString() ?? "")
-        
         RealmDB.shared.update(displayJoke!, with: dict)
         
     }
     
     func  ConvertToInteger(_ displayStr: String) -> Int{
+        
         let index = displayStr.index(displayStr.startIndex, offsetBy: 2)
+        
         let mins = String(displayStr[..<index])
        // print(displayStr)
        // print("\(mins) mins")
         let start = displayStr.index(displayStr.startIndex, offsetBy: 7)
+        
         let end =   displayStr.index(displayStr.endIndex, offsetBy: -4)
+        
         let range = start..<end
+        
         let secs = String(displayStr[range])
+        
         //print("\(secs) secs")
         return (Int(mins)! * 60) + Int(secs)!
     }
@@ -273,10 +232,15 @@ class JokeController: UIViewController, UITextViewDelegate, UITextFieldDelegate,
     
     override func viewWillDisappear(_ animated: Bool){
         
-        if titleField.text?.isEmpty ?? true || bodyView.text.isEmpty {
+        print("view will dissapear")
+
+        if !deleteTappedFlg {
             
-            RealmDB.shared.delete(displayJoke!)
+            updateDB()
             
+        }else{
+            
+            deleteTappedFlg = false
         }
         
     }

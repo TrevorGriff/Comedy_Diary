@@ -40,6 +40,12 @@ class JokeListController : UIViewController {
         
     }
     
+    
+    @IBAction func addNewJokeTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "JokeListToNewJoke", sender: self)
+    }
+    
 }
 
 extension JokeListController : UITableViewDataSource, UITableViewDelegate{
@@ -77,26 +83,67 @@ extension JokeListController : UITableViewDataSource, UITableViewDelegate{
                 return jokes.count
             }
         
-       }
+    }
 
        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-            performSegue(withIdentifier: "jokeListToJoke", sender: self)
+            performSegue(withIdentifier: "JokeListToJoke", sender: self)
 
        }
     
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
             
-            let destinationVC = segue.destination as! JokeController
-
-            if let indexPath = jokeTable!.indexPathForSelectedRow{
-                
-                let selectedJoke = jokes[indexPath.row]
-                
-                destinationVC.displayJoke = selectedJoke
-
-            }
-      }
+            print("segue: \( segue.identifier)")
+            
+//            if segue.identifier == "JokeListToJoke" {
+//
+//                let destinationVC = segue.destination as! JokeController
+//
+//                if let indexPath = jokeTable!.indexPathForSelectedRow{
+//
+//                    let selectedJoke = jokes[indexPath.row]
+//
+//                    destinationVC.displayJoke = selectedJoke
+//                }
+//            }
+//
+//            if segue.identifier == "JokeListToNewJoke" {
+//
+//                let destinationVC = segue.destination as! JokeController
+//                let selectedJoke = Joke()
+//                destinationVC.displayJoke = selectedJoke
+//            }
+//        }
+        var selectedJoke: Joke? 
+        
+        let destinationVC = segue.destination as! JokeController
+        
+        switch segue.identifier {
+            
+        case "JokeListToJoke":
+            
+                 if let indexPath = jokeTable!.indexPathForSelectedRow{
+            
+                    selectedJoke = jokes[indexPath.row]
+               
+                }
+            
+        case "JokeListToNewJoke":
+            
+             selectedJoke = Joke()
+             selectedJoke?.title = "Type the Title of your joke here"
+             selectedJoke?.body = "Type the rest of your Joke here"
+             RealmDB.shared.create(selectedJoke!)
+             
+        default:
+            
+            print(segue.identifier)
+            
+        }
+        
+        destinationVC.displayJoke = selectedJoke
+    }
+        
 }
 
 class JokeListRow: UITableViewCell{
